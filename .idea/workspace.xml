@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4a4fa793-9907-45fe-b859-6dce15dffea0" name="Default Changelist" comment="" />
+    <list default="true" id="4a4fa793-9907-45fe-b859-6dce15dffea0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/templates/app/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animal/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/animal/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animal/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/animal/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -18,9 +32,15 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../git/django-blog" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hyunq\Desktop\animal_prj\animal\app" />
+    </key>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -45,9 +65,25 @@
       <option name="presentableId" value="Default" />
       <updated>1599379845532</updated>
     </task>
+    <task id="LOCAL-00001" summary="초기 세팅">
+      <created>1599381849789</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1599381849789</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="초기 세팅" />
+    <option name="LAST_COMMIT_MESSAGE" value="초기 세팅" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="799" y="9" key="CommitChangelistDialog2" timestamp="1599381848600">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="799" y="9" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1599381848600" />
     <state x="899" y="263" key="FileChooserDialogImpl" timestamp="1599380078763">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -56,9 +92,20 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="321" y="86" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1599380126340" />
-    <state x="505" y="150" key="Vcs.Push.Dialog.v2" timestamp="1599381826503">
+    <state x="505" y="150" key="Vcs.Push.Dialog.v2" timestamp="1599381864407">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="505" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1599381826503" />
+    <state x="505" y="150" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1599381864407" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/animal/urls.py</url>
+          <line>15</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
