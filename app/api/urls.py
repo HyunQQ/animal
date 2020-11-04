@@ -1,13 +1,14 @@
 from django.urls import path, include
 from rest_framework import routers
-from app.views import UserViewSet
+from app.api.views import UserViewSet
+from app.api.api import AnimalUserViewSet
 
 app_name='app'
 
 
 router = routers.DefaultRouter()
-router.register(r'users', UserViewSet)
-# router.register(r'groups', views.GroupViewSet)
+router.register(r'basicusers', UserViewSet)
+router.register(r'animaluser', AnimalUserViewSet)
 
 # user_list = UserView.as_view({
 #     'get' :'list'

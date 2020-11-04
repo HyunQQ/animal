@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
+from app.models import AnimalUser
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -8,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-# class GroupSerializer(serializers.HyperlinkedModelSerializer):
-#     class Meta:
-#         model = Group
-#         fields = ('url', 'name')
+class AnimalUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AnimalUser
+        fields = '__all__'
