@@ -1,10 +1,12 @@
 from django.contrib.auth.models import User
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from app.api.serializers import UserSerializer
+from rest_framework.views import APIView
 
-
+from app.models import AnimalUser
+from app.api.serializers import UserSerializer, AnimalUserSerializer
+from app.api.animal_api import get_sido, get_kind, get_shelter, get_sigungu, get_abandonment
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
@@ -26,8 +28,19 @@ class UserViewSet(viewsets.ModelViewSet):
         instance.first_name = request.data.first_name
 
 
+class AnimalUserViewSet(viewsets.ModelViewSet):
+    queryset = AnimalUser.objects.all().order_by('-created_at')
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = AnimalUserSerializer
 
-# class GroupViewSet(viewsets.ModelViewSet):
-#     queryset = Group.objects.all()
-#     serializer_class = GroupSerializer
-#     permission_classes = [permissions.IsAuthenticated]
+class SidoList(APIView):
+    def get(self, request):
+        rslt = get_sido()
+
+        return Response(rslt)
+
+        # response = Response()
+        # response['sido_rslt'] = rslt
+        # return response
