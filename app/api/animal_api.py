@@ -14,6 +14,13 @@ from xml.etree import ElementTree
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 
+def make_response(response_data: dict=dict(), req_param: dict= dict()):
+    response = dict()
+    response['param'] = req_param
+    response['rslt'] = response_data
+
+    return response
+
 def make_url(basic_url: str, query_data: dict):
     full_url = basic_url + "?"
     len_query = len(query_data)
@@ -34,11 +41,10 @@ def get_sido():
 
     try:
         response = urlopen(full_url)
-        rslt = response.read()
-        rslt = rslt.decode('utf-8')
+        xml_rslt = response.read()
+        xml_rslt = xml_rslt.decode('utf-8')
 
-
-        root_element = ElementTree.fromstring(rslt)
+        root_element = ElementTree.fromstring(xml_rslt)
         rslts = []
         iter_element = root_element.iter(tag='item')
 
@@ -49,89 +55,150 @@ def get_sido():
 
             rslts.append(rslt)
 
-        return rslts
+        response = make_response(response_data = rslts)
+
+        return response
     except URLError as e:
         print(e.reason)
         return e.reason
 
 
 
-def get_sigungu(sido):
+def get_sigungu(upr_cd):
     url = config['API']['URL_SIGUNGU']
 
-    input_data = dict()
-    input_data['upr_cd'] = sido
-    input_data['serviceKey'] = config['API']['APP_KEY']
-    url_values = urlencode(input_data)
-    full_url = url+'?'+url_values
-    print(full_url)
+    query_data = dict()
+    query_data['upr_cd'] = upr_cd
+    req_param = query_data.copy()
+
+    query_data['serviceKey'] = config['API']['APP_KEY']
+    full_url = make_url(url, query_data)
 
     try:
         response = urlopen(full_url)
-        print(response)
+        xml_rslt = response.read()
+        xml_rslt = xml_rslt.decode('utf-8')
+
+        root_element = ElementTree.fromstring(xml_rslt)
+        rslts = []
+        iter_element = root_element.iter(tag='item')
+
+        for element in iter_element:
+            rslt = {}
+            rslt['orgCd'] = element.find('orgCd').text
+            rslt['orgdownNm'] = element.find('orgdownNm').text
+
+            rslts.append(rslt)
+
+        response = make_response(response_data=rslts, req_param=req_param)
+
+        return response
     except URLError as e:
         print(e.reason)
+        return e.reason
 
-    rslt = 0
-    return rslt
 
 def get_shelter(sido, sigungu):
     url = config['API']['URL_SHELTER']
 
-    input_data = dict()
-    input_data['upr_cd'] = sido
-    input_data['org_cd'] = sigungu
-    input_data['serviceKey'] = config['API']['APP_KEY']
-    url_values = urlencode(input_data)
-    full_url = url+'?'+url_values
-    print(full_url)
+    query_data = dict()
+    query_data['upr_cd'] = sido
+    query_data['org_cd'] = sigungu
+    req_param = query_data.copy()
+
+    query_data['serviceKey'] = config['API']['APP_KEY']
+    full_url = make_url(url, query_data)
 
     try:
         response = urlopen(full_url)
-        print(response)
+        xml_rslt = response.read()
+        xml_rslt = xml_rslt.decode('utf-8')
+
+        root_element = ElementTree.fromstring(xml_rslt)
+        rslts = []
+        iter_element = root_element.iter(tag='item')
+
+        for element in iter_element:
+            rslt = {}
+            rslt['orgCd'] = element.find('orgCd').text
+            rslt['orgdownNm'] = element.find('orgdownNm').text
+
+            rslts.append(rslt)
+
+        response = make_response(response_data=rslts)
+
+        return response
     except URLError as e:
         print(e.reason)
+        return e.reason
 
-    rslt = 0
-    return rslt
 
 def get_kind(up_kind_cd):
     url = config['API']['URL_KIND']
 
-    input_data = dict()
-    input_data['up_kind_cd'] = up_kind_cd
-    input_data['serviceKey'] = config['API']['APP_KEY']
-    url_values = urlencode(input_data)
-    full_url = url+'?'+url_values
-    print(full_url)
+    query_data = dict()
+    query_data['up_kind_cd'] = up_kind_cd
+    req_param = query_data.copy()
+
+    query_data['serviceKey'] = config['API']['APP_KEY']
+    full_url = make_url(url, query_data)
 
     try:
         response = urlopen(full_url)
-        print(response)
+        xml_rslt = response.read()
+        xml_rslt = xml_rslt.decode('utf-8')
+
+        root_element = ElementTree.fromstring(xml_rslt)
+        rslts = []
+        iter_element = root_element.iter(tag='item')
+
+        for element in iter_element:
+            rslt = {}
+            rslt['orgCd'] = element.find('orgCd').text
+            rslt['orgdownNm'] = element.find('orgdownNm').text
+
+            rslts.append(rslt)
+
+        response = make_response(response_data=rslts)
+
+        return response
     except URLError as e:
         print(e.reason)
-    rslt = 0
-    return rslt
+        return e.reason
+
 
 def get_abandonment(bgnde, endde, pageNo, numOfRows):
     url = config['API']['URL_ABANDONMENT']
 
-    input_data = dict()
-    input_data['bgnde'] = bgnde
-    input_data['endde'] = endde
-    input_data['pageNo'] = pageNo
-    input_data['numOfRows'] = numOfRows
-    input_data['serviceKey'] = config['API']['APP_KEY']
-    url_values = urlencode(input_data)
-    full_url = url+'?'+url_values
-    print(full_url)
+    query_data = dict()
+    query_data['bgnde'] = bgnde
+    query_data['endde'] = endde
+    query_data['pageNo'] = pageNo
+    query_data['numOfRows'] = numOfRows
+    req_param = query_data.copy()
+    query_data['serviceKey'] = config['API']['APP_KEY']
+    full_url = make_url(url, query_data)
 
     try:
         response = urlopen(full_url)
-        print(response)
+        xml_rslt = response.read()
+        xml_rslt = xml_rslt.decode('utf-8')
+
+        root_element = ElementTree.fromstring(xml_rslt)
+        rslts = []
+        iter_element = root_element.iter(tag='item')
+
+        for element in iter_element:
+            rslt = {}
+            rslt['orgCd'] = element.find('orgCd').text
+            rslt['orgdownNm'] = element.find('orgdownNm').text
+
+            rslts.append(rslt)
+
+        response = make_response(response_data=rslts)
+
+        return response
     except URLError as e:
         print(e.reason)
-
-    rslt = 0
-    return rslt
+        return e.reason
 

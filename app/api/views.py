@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -38,9 +38,17 @@ class AnimalUserViewSet(viewsets.ModelViewSet):
 class SidoList(APIView):
     def get(self, request):
         rslt = get_sido()
+        return Response(rslt)
+
+class SiGunGuList(APIView):
+    def get(self, request):
+        sido_code = request.query_params.get('upr_cd')
+
+        if sido_code is None:
+            content = {'please check sido': 'need to input sido information'}
+            return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            rslt = get_sigungu(sido_code)
 
         return Response(rslt)
 
-        # response = Response()
-        # response['sido_rslt'] = rslt
-        # return response
