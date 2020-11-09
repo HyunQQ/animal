@@ -98,12 +98,12 @@ def get_sigungu(upr_cd):
         return e.reason
 
 
-def get_shelter(sido, sigungu):
+def get_shelter(upr_cd, org_cd):
     url = config['API']['URL_SHELTER']
 
     query_data = dict()
-    query_data['upr_cd'] = sido
-    query_data['org_cd'] = sigungu
+    query_data['upr_cd'] = upr_cd
+    query_data['org_cd'] = org_cd
     req_param = query_data.copy()
 
     query_data['serviceKey'] = config['API']['APP_KEY']
@@ -120,12 +120,11 @@ def get_shelter(sido, sigungu):
 
         for element in iter_element:
             rslt = {}
-            rslt['orgCd'] = element.find('orgCd').text
-            rslt['orgdownNm'] = element.find('orgdownNm').text
-
+            rslt['careNm'] = element.find('careNm').text
+            rslt['careRegNo'] = element.find('careRegNo').text
             rslts.append(rslt)
 
-        response = make_response(response_data=rslts)
+        response = make_response(response_data=rslts, req_param=req_param)
 
         return response
     except URLError as e:
@@ -154,12 +153,12 @@ def get_kind(up_kind_cd):
 
         for element in iter_element:
             rslt = {}
-            rslt['orgCd'] = element.find('orgCd').text
-            rslt['orgdownNm'] = element.find('orgdownNm').text
+            rslt['careNm'] = element.find('careNm').text
+            rslt['careRegNo'] = element.find('careRegNo').text
 
             rslts.append(rslt)
 
-        response = make_response(response_data=rslts)
+        response = make_response(response_data=rslts, req_param=req_param)
 
         return response
     except URLError as e:
@@ -195,7 +194,7 @@ def get_abandonment(bgnde, endde, pageNo, numOfRows):
 
             rslts.append(rslt)
 
-        response = make_response(response_data=rslts)
+        response = make_response(response_data=rslts, req_param=req_param)
 
         return response
     except URLError as e:

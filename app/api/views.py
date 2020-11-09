@@ -49,6 +49,20 @@ class SiGunGuList(APIView):
             return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         else:
             rslt = get_sigungu(sido_code)
+            return Response(rslt)
 
-        return Response(rslt)
 
+class ShelterList(APIView):
+    def get(self, request):
+        upr_cd = request.query_params.get('upr_cd')
+        org_cd = request.query_params.get('org_cd')
+
+        if upr_cd is None:
+            content = {'Check sido information': 'Need to input sido information'}
+            return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        elif org_cd is None:
+            content = {'Check sigungu information': 'Need to input sigungu information'}
+            return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            rslt = get_shelter(upr_cd, org_cd)
+            return Response(rslt)
