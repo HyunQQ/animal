@@ -45,7 +45,7 @@ class SiGunGuList(APIView):
         sido_code = request.query_params.get('upr_cd')
 
         if sido_code is None:
-            content = {'please check sido': 'need to input sido information'}
+            content = {'please check sido': 'need to input upr_cd information'}
             return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         else:
             rslt = get_sigungu(sido_code)
@@ -58,11 +58,23 @@ class ShelterList(APIView):
         org_cd = request.query_params.get('org_cd')
 
         if upr_cd is None:
-            content = {'Check sido information': 'Need to input sido information'}
+            content = {'Check sido information': 'Need to input upr_cd information'}
             return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         elif org_cd is None:
-            content = {'Check sigungu information': 'Need to input sigungu information'}
+            content = {'Check sigungu information': 'Need to input org_cd information'}
             return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         else:
             rslt = get_shelter(upr_cd, org_cd)
+            return Response(rslt)
+
+
+class KindList(APIView):
+    def get(self, request):
+        up_kind_cd = request.query_params.get('up_kind_cd')
+
+        if up_kind_cd is None:
+            content = {'Check kind information': 'Need to input up_kind_cd information'}
+            return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            rslt = get_kind(up_kind_cd)
             return Response(rslt)

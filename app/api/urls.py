@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework import routers
-from app.api.views import UserViewSet, AnimalUserViewSet, SidoList, SiGunGuList, ShelterList
+from app.api.views import UserViewSet, AnimalUserViewSet, SidoList, SiGunGuList, ShelterList, KindList
 
 app_name='app'
 
@@ -18,6 +18,7 @@ urlpatterns=[
     path('auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('get_sido/', SidoList.as_view()),
     path('get_sigungu/', SiGunGuList.as_view()),
-    path('get_shelter/', ShelterList.as_view())
+    path('get_shelter/', ShelterList.as_view()),
+    path('get_kind/', KindList.as_view())
 ]
 

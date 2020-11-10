@@ -153,9 +153,8 @@ def get_kind(up_kind_cd):
 
         for element in iter_element:
             rslt = {}
-            rslt['careNm'] = element.find('careNm').text
-            rslt['careRegNo'] = element.find('careRegNo').text
-
+            rslt['KNm'] = element.find('KNm').text
+            rslt['kindCd'] = element.find('kindCd').text
             rslts.append(rslt)
 
         response = make_response(response_data=rslts, req_param=req_param)
