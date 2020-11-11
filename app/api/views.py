@@ -78,3 +78,19 @@ class KindList(APIView):
         else:
             rslt = get_kind(up_kind_cd)
             return Response(rslt)
+
+
+class AbandonmentList(APIView):
+    def get(self, request):
+        up_kind_cd = request.query_params.get('up_kind_cd')
+        test = request.parsers
+        print(test)
+        # myDict = dict(queryDict.iterlists())
+
+
+        if up_kind_cd is None:
+            content = {'Check kind information': 'Need to input up_kind_cd information'}
+            return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            rslt = get_abandonment(up_kind_cd)
+            return Response(rslt)

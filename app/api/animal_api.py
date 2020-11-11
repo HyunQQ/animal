@@ -165,14 +165,13 @@ def get_kind(up_kind_cd):
         return e.reason
 
 
-def get_abandonment(bgnde, endde, pageNo, numOfRows):
+def get_abandonment(**kwargs):
     url = config['API']['URL_ABANDONMENT']
 
     query_data = dict()
-    query_data['bgnde'] = bgnde
-    query_data['endde'] = endde
-    query_data['pageNo'] = pageNo
-    query_data['numOfRows'] = numOfRows
+    for key, item in kwargs.items():
+        query_data[key] = item
+
     req_param = query_data.copy()
     query_data['serviceKey'] = config['API']['APP_KEY']
     full_url = make_url(url, query_data)
@@ -188,12 +187,40 @@ def get_abandonment(bgnde, endde, pageNo, numOfRows):
 
         for element in iter_element:
             rslt = {}
-            rslt['orgCd'] = element.find('orgCd').text
-            rslt['orgdownNm'] = element.find('orgdownNm').text
+            rslt['desertionNo'] = element.find('desertionNo').text
+            rslt['filename'] = element.find('filename').text
+            rslt['happenDt'] = element.find('happenDt').text
+            rslt['happenPlace'] = element.find('happenPlace').text
+            rslt['kindCd'] = element.find('kindCd').text
+            rslt['colorCd'] = element.find('colorCd').text
+            rslt['age'] = element.find('age').text
+            rslt['weight'] = element.find('weight').text
+            rslt['noticeNo'] = element.find('noticeNo').text
+            rslt['noticeSdt'] = element.find('noticeSdt').text
+            rslt['noticeEdt'] = element.find('noticeEdt').text
+            rslt['popfile'] = element.find('popfile').text
+            rslt['processState'] = element.find('processState').text
+            rslt['sexCd'] = element.find('sexCd').text
+            rslt['neuterYn'] = element.find('neuterYn').text
+            rslt['specialMark'] = element.find('specialMark').text
+            rslt['careNm'] = element.find('careNm').text
+            rslt['careTel'] = element.find('careTel').text
+            rslt['careAddr'] = element.find('careAddr').text
+            rslt['orgNm'] = element.find('orgNm').text
+            rslt['chargeNm'] = element.find('chargeNm').text
+            rslt['officetel'] = element.find('officetel').text
+            rslt['noticeComment'] = element.find('noticeComment').text
 
             rslts.append(rslt)
 
+        # items 이외의 정보
+        # rslt['numOfRows'] = element.find('numOfRows').text
+        # rslt['pageNo'] = element.find('pageNo').text
+        # rslt['totalCount'] = element.find('totalCount').text
+
         response = make_response(response_data=rslts, req_param=req_param)
+
+
 
         return response
     except URLError as e:
