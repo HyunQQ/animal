@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from app.models import AnimalUser
 from app.api.serializers import UserSerializer, AnimalUserSerializer
 from app.api.animal_api import get_sido, get_kind, get_shelter, get_sigungu, get_abandonment
+from app.api.common import get_querys
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
@@ -37,60 +38,55 @@ class AnimalUserViewSet(viewsets.ModelViewSet):
 
 class SidoList(APIView):
     def get(self, request):
-        rslt = get_sido()
+        querys = get_querys(request)
+        rslt = get_sido(querys)
         return Response(rslt)
 
 class SiGunGuList(APIView):
     def get(self, request):
-        sido_code = request.query_params.get('upr_cd')
+        querys = get_querys(request)
+        # sido_code = request.query_params.get('upr_cd')
 
-        if sido_code is None:
+        if 'sido_code' not in querys.keys():
             content = {'please check sido': 'need to input upr_cd information'}
             return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         else:
-            rslt = get_sigungu(sido_code)
+            rslt = get_sigungu(querys)
             return Response(rslt)
 
 
 class ShelterList(APIView):
     def get(self, request):
-        upr_cd = request.query_params.get('upr_cd')
-        org_cd = request.query_params.get('org_cd')
+        querys = get_querys(request)
 
-        if upr_cd is None:
+        if 'upr_cd' not in querys.keys():
             content = {'Check sido information': 'Need to input upr_cd information'}
             return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        elif org_cd is None:
+        elif 'org_cd' not in querys.keys():
             content = {'Check sigungu information': 'Need to input org_cd information'}
             return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         else:
-            rslt = get_shelter(upr_cd, org_cd)
+            rslt = get_shelter(querys)
             return Response(rslt)
 
 
 class KindList(APIView):
     def get(self, request):
-        up_kind_cd = request.query_params.get('up_kind_cd')
+        querys = get_querys(request)
 
-        if up_kind_cd is None:
+        if 'up_kind_cd' not in querys.keys():
             content = {'Check kind information': 'Need to input up_kind_cd information'}
             return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         else:
-            rslt = get_kind(up_kind_cd)
+            rslt = get_kind(querys)
             return Response(rslt)
 
 
 class AbandonmentList(APIView):
     def get(self, request):
-        up_kind_cd = request.query_params.get('up_kind_cd')
-        test = request.parsers
-        print(test)
-        # myDict = dict(queryDict.iterlists())
+        querys = dict()
+        for key, value in request.query_params.items():
+            querys[key] = value
 
-
-        if up_kind_cd is None:
-            content = {'Check kind information': 'Need to input up_kind_cd information'}
-            return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        else:
-            rslt = get_abandonment(up_kind_cd)
-            return Response(rslt)
+        rslt = get_abandonment(querys)
+        return Response(rslt)

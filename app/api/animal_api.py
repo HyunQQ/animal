@@ -14,9 +14,10 @@ from xml.etree import ElementTree
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 
-def make_response(response_data: dict=dict(), req_param: dict= dict()):
+def make_response(info_data: dict, response_data: dict=dict(), req_param: dict= dict()):
     response = dict()
     response['param'] = req_param
+    response['info'] = info_data
     response['rslt'] = response_data
 
     return response
@@ -33,9 +34,13 @@ def make_url(basic_url: str, query_data: dict):
 
     return full_url
 
-def get_sido():
+def get_sido(querys):
     url = config['API']['URL_SIDO']
+
     query_data = dict()
+    for key, value in querys.items():
+        query_data[key] = value
+
     query_data['serviceKey'] = config['API']['APP_KEY']
     full_url = make_url(url, query_data)
 
@@ -45,6 +50,14 @@ def get_sido():
         xml_rslt = xml_rslt.decode('utf-8')
 
         root_element = ElementTree.fromstring(xml_rslt)
+
+        info = dict()
+        info['resultCode'] = root_element.find('header').find('resultCode').text
+        info['resultMsg'] = root_element.find('header').find('resultMsg').text
+        info['numOfRows'] = root_element.find('body').find('numOfRows').text
+        info['pageNo'] = root_element.find('body').find('pageNo').text
+        info['totalCount'] = root_element.find('body').find('totalCount').text
+
         rslts = []
         iter_element = root_element.iter(tag='item')
 
@@ -55,7 +68,7 @@ def get_sido():
 
             rslts.append(rslt)
 
-        response = make_response(response_data = rslts)
+        response = make_response(response_data = rslts, info_data=info)
 
         return response
     except URLError as e:
@@ -64,11 +77,13 @@ def get_sido():
 
 
 
-def get_sigungu(upr_cd):
+def get_sigungu(querys):
     url = config['API']['URL_SIGUNGU']
 
     query_data = dict()
-    query_data['upr_cd'] = upr_cd
+    for key, value in querys.items():
+        query_data[key] = value
+
     req_param = query_data.copy()
 
     query_data['serviceKey'] = config['API']['APP_KEY']
@@ -80,6 +95,13 @@ def get_sigungu(upr_cd):
         xml_rslt = xml_rslt.decode('utf-8')
 
         root_element = ElementTree.fromstring(xml_rslt)
+        info = dict()
+        info['resultCode'] = root_element.find('header').find('resultCode').text
+        info['resultMsg'] = root_element.find('header').find('resultMsg').text
+        info['numOfRows'] = root_element.find('body').find('numOfRows').text
+        info['pageNo'] = root_element.find('body').find('pageNo').text
+        info['totalCount'] = root_element.find('body').find('totalCount').text
+
         rslts = []
         iter_element = root_element.iter(tag='item')
 
@@ -98,12 +120,12 @@ def get_sigungu(upr_cd):
         return e.reason
 
 
-def get_shelter(upr_cd, org_cd):
+def get_shelter(querys):
     url = config['API']['URL_SHELTER']
 
     query_data = dict()
-    query_data['upr_cd'] = upr_cd
-    query_data['org_cd'] = org_cd
+    for key, value in querys.items():
+        query_data[key] = value
     req_param = query_data.copy()
 
     query_data['serviceKey'] = config['API']['APP_KEY']
@@ -115,6 +137,13 @@ def get_shelter(upr_cd, org_cd):
         xml_rslt = xml_rslt.decode('utf-8')
 
         root_element = ElementTree.fromstring(xml_rslt)
+        info = dict()
+        info['resultCode'] = root_element.find('header').find('resultCode').text
+        info['resultMsg'] = root_element.find('header').find('resultMsg').text
+        info['numOfRows'] = root_element.find('body').find('numOfRows').text
+        info['pageNo'] = root_element.find('body').find('pageNo').text
+        info['totalCount'] = root_element.find('body').find('totalCount').text
+
         rslts = []
         iter_element = root_element.iter(tag='item')
 
@@ -132,11 +161,12 @@ def get_shelter(upr_cd, org_cd):
         return e.reason
 
 
-def get_kind(up_kind_cd):
+def get_kind(querys):
     url = config['API']['URL_KIND']
 
     query_data = dict()
-    query_data['up_kind_cd'] = up_kind_cd
+    for key, value in querys.items():
+        query_data[key] = value
     req_param = query_data.copy()
 
     query_data['serviceKey'] = config['API']['APP_KEY']
@@ -148,6 +178,14 @@ def get_kind(up_kind_cd):
         xml_rslt = xml_rslt.decode('utf-8')
 
         root_element = ElementTree.fromstring(xml_rslt)
+
+        info = dict()
+        info['resultCode'] = root_element.find('header').find('resultCode').text
+        info['resultMsg'] = root_element.find('header').find('resultMsg').text
+        info['numOfRows'] = root_element.find('body').find('numOfRows').text
+        info['pageNo'] = root_element.find('body').find('pageNo').text
+        info['totalCount'] = root_element.find('body').find('totalCount').text
+
         rslts = []
         iter_element = root_element.iter(tag='item')
 
@@ -165,12 +203,12 @@ def get_kind(up_kind_cd):
         return e.reason
 
 
-def get_abandonment(**kwargs):
+def get_abandonment(querys):
     url = config['API']['URL_ABANDONMENT']
 
     query_data = dict()
-    for key, item in kwargs.items():
-        query_data[key] = item
+    for key, value in querys.items():
+        query_data[key] = value
 
     req_param = query_data.copy()
     query_data['serviceKey'] = config['API']['APP_KEY']
@@ -182,6 +220,13 @@ def get_abandonment(**kwargs):
         xml_rslt = xml_rslt.decode('utf-8')
 
         root_element = ElementTree.fromstring(xml_rslt)
+        info = dict()
+        info['resultCode'] = root_element.find('header').find('resultCode').text
+        info['resultMsg'] = root_element.find('header').find('resultMsg').text
+        info['numOfRows'] = root_element.find('body').find('numOfRows').text
+        info['pageNo'] = root_element.find('body').find('pageNo').text
+        info['totalCount'] = root_element.find('body').find('totalCount').text
+
         rslts = []
         iter_element = root_element.iter(tag='item')
 
@@ -209,20 +254,12 @@ def get_abandonment(**kwargs):
             rslt['orgNm'] = element.find('orgNm').text
             rslt['chargeNm'] = element.find('chargeNm').text
             rslt['officetel'] = element.find('officetel').text
-            rslt['noticeComment'] = element.find('noticeComment').text
 
             rslts.append(rslt)
 
-        # items 이외의 정보
-        # rslt['numOfRows'] = element.find('numOfRows').text
-        # rslt['pageNo'] = element.find('pageNo').text
-        # rslt['totalCount'] = element.find('totalCount').text
-
-        response = make_response(response_data=rslts, req_param=req_param)
-
-
-
+        response = make_response(response_data=rslts, req_param=req_param, info_data = info)
         return response
+
     except URLError as e:
         print(e.reason)
         return e.reason
