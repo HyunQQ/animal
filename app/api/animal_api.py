@@ -98,9 +98,6 @@ def get_sigungu(querys):
         info = dict()
         info['resultCode'] = root_element.find('header').find('resultCode').text
         info['resultMsg'] = root_element.find('header').find('resultMsg').text
-        info['numOfRows'] = root_element.find('body').find('numOfRows').text
-        info['pageNo'] = root_element.find('body').find('pageNo').text
-        info['totalCount'] = root_element.find('body').find('totalCount').text
 
         rslts = []
         iter_element = root_element.iter(tag='item')
@@ -140,9 +137,6 @@ def get_shelter(querys):
         info = dict()
         info['resultCode'] = root_element.find('header').find('resultCode').text
         info['resultMsg'] = root_element.find('header').find('resultMsg').text
-        info['numOfRows'] = root_element.find('body').find('numOfRows').text
-        info['pageNo'] = root_element.find('body').find('pageNo').text
-        info['totalCount'] = root_element.find('body').find('totalCount').text
 
         rslts = []
         iter_element = root_element.iter(tag='item')
@@ -182,9 +176,6 @@ def get_kind(querys):
         info = dict()
         info['resultCode'] = root_element.find('header').find('resultCode').text
         info['resultMsg'] = root_element.find('header').find('resultMsg').text
-        info['numOfRows'] = root_element.find('body').find('numOfRows').text
-        info['pageNo'] = root_element.find('body').find('pageNo').text
-        info['totalCount'] = root_element.find('body').find('totalCount').text
 
         rslts = []
         iter_element = root_element.iter(tag='item')

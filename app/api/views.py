@@ -47,7 +47,7 @@ class SiGunGuList(APIView):
         querys = get_querys(request)
         # sido_code = request.query_params.get('upr_cd')
 
-        if 'sido_code' not in querys.keys():
+        if 'upr_cd' not in querys.keys():
             content = {'please check sido': 'need to input upr_cd information'}
             return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         else:
