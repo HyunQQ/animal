@@ -14,6 +14,7 @@ from xml.etree import ElementTree
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 
+
 def make_response(info_data: dict, response_data: dict=dict(), req_param: dict= dict()):
     response = dict()
     response['param'] = req_param
@@ -21,6 +22,7 @@ def make_response(info_data: dict, response_data: dict=dict(), req_param: dict= 
     response['rslt'] = response_data
 
     return response
+
 
 def make_url(basic_url: str, query_data: dict):
     full_url = basic_url + "?"
@@ -33,6 +35,7 @@ def make_url(basic_url: str, query_data: dict):
             full_url += key + "=" + value + "&"
 
     return full_url
+
 
 def get_sido(querys):
     url = config['API']['URL_SIDO']
@@ -76,7 +79,6 @@ def get_sido(querys):
         return e.reason
 
 
-
 def get_sigungu(querys):
     url = config['API']['URL_SIGUNGU']
 
@@ -109,7 +111,7 @@ def get_sigungu(querys):
 
             rslts.append(rslt)
 
-        response = make_response(response_data=rslts, req_param=req_param)
+        response = make_response(response_data=rslts, req_param=req_param, info_data=info)
 
         return response
     except URLError as e:
@@ -147,7 +149,7 @@ def get_shelter(querys):
             rslt['careRegNo'] = element.find('careRegNo').text
             rslts.append(rslt)
 
-        response = make_response(response_data=rslts, req_param=req_param)
+        response = make_response(response_data=rslts, req_param=req_param, info_data=info)
 
         return response
     except URLError as e:
@@ -186,7 +188,7 @@ def get_kind(querys):
             rslt['kindCd'] = element.find('kindCd').text
             rslts.append(rslt)
 
-        response = make_response(response_data=rslts, req_param=req_param)
+        response = make_response(response_data=rslts, req_param=req_param,info_data=info)
 
         return response
     except URLError as e:
