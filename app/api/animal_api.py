@@ -2,7 +2,6 @@
     유기동물 api 정의
     5hyunq
     2020.11.01
-    sample url: http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/sido?serviceKey=[secret key]
 """
 
 import configparser
