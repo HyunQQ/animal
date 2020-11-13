@@ -22,6 +22,7 @@ def get_sido(querys):
     for key, value in querys.items():
         query_data[key] = value
 
+    req_param = query_data.copy()
     query_data['serviceKey'] = config['ANIMAL_API']['APP_KEY']
     full_url = make_url(url, query_data)
 
@@ -49,7 +50,7 @@ def get_sido(querys):
 
             rslts.append(rslt)
 
-        response = make_response(response_data = rslts, info_data=info)
+        response = make_response(response_data = rslts, req_param=req_param, info_data=info)
 
         return response
     except URLError as e:
