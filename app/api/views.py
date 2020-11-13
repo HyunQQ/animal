@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from app.models import AnimalUser
 from app.api.serializers import UserSerializer, AnimalUserSerializer
 from app.api.animal_api import get_sido, get_kind, get_shelter, get_sigungu, get_abandonment
+from app.api.shelter_api import get_shelter_detail
 from app.api.common import get_querys
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -89,4 +90,14 @@ class AbandonmentList(APIView):
             querys[key] = value
 
         rslt = get_abandonment(querys)
+        return Response(rslt)
+
+
+class ShelterDetail(APIView):
+    def get(self, request):
+        querys = dict()
+        for key, value in request.query_params.items():
+            querys[key] = value
+
+        rslt = get_shelter_detail(querys)
         return Response(rslt)

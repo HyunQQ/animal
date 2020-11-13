@@ -1,8 +1,7 @@
 """
-    유기동물 api 정의
+    보호소 정보 api 정의
     5hyunq
-    2020.11.01
-    sample url: http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/sido?serviceKey=[secret key]
+    2020.11.13
 """
 
 import configparser
@@ -15,7 +14,8 @@ from app.api.common import make_response, make_url
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 
-def get_shelter_info(querys):
+
+def get_shelter_detail(querys):
     url = config['SHELTER_API']['URL_BASE'] + config['SHELTER_API']['URL_SHELTER_INFO']
 
     query_data = dict()
@@ -35,14 +35,42 @@ def get_shelter_info(querys):
         info = dict()
         info['resultCode'] = root_element.find('header').find('resultCode').text
         info['resultMsg'] = root_element.find('header').find('resultMsg').text
+        info['numOfRows'] = root_element.find('body').find('numOfRows').text
+        info['pageNo'] = root_element.find('body').find('pageNo').text
+        info['totalCount'] = root_element.find('body').find('totalCount').text
 
         rslts = []
         iter_element = root_element.iter(tag='item')
 
         for element in iter_element:
             rslt = {}
-            rslt['orgCd'] = element.find('orgCd').text
-            rslt['orgdownNm'] = element.find('orgdownNm').text
+            rslt['breedCnt'] = element.find('breedCnt').text
+            rslt['careAddr'] = element.find('careAddr').text
+            rslt['careNm'] = element.find('careNm').text
+            rslt['careTel'] = element.find('careTel').text
+            rslt['closeDay'] = element.find('closeDay').text
+            rslt['dataStdDt'] = element.find('dataStdDt').text
+            rslt['divisionNm'] = element.find('divisionNm').text
+            rslt['dsignationDate'] = element.find('dsignationDate').text
+            rslt['feedCnt'] = element.find('feedCnt').text
+            rslt['jibunAddr'] = element.find('jibunAddr').text
+            rslt['lat'] = element.find('lat').text
+            rslt['lng'] = element.find('lng').text
+            rslt['medicalCnt'] = element.find('medicalCnt').text
+            rslt['orgNm'] = element.find('orgNm').text
+            rslt['quarabtineCnt'] = element.find('quarabtineCnt').text
+            rslt['rnum'] = element.find('rnum').text
+            rslt['saveTrgtAnimal'] = element.find('saveTrgtAnimal').text
+            rslt['specsPersonCnt'] = element.find('specsPersonCnt').text
+            rslt['vetPersonCnt'] = element.find('vetPersonCnt').text
+            rslt['weekCellEtime'] = element.find('weekCellEtime').text
+            rslt['weekCellStime'] = element.find('weekCellStime').text
+            rslt['weekOprEtime'] = element.find('weekOprEtime').text
+            rslt['weekOprStime'] = element.find('weekOprStime').text
+            rslt['weekendCellEtime'] = element.find('weekendCellEtime').text
+            rslt['weekendCellStime'] = element.find('weekendCellStime').text
+            rslt['weekendOprEtime'] = element.find('weekendOprEtime').text
+            rslt['weekendOprStime'] = element.find('weekendOprStime').text
 
             rslts.append(rslt)
 
