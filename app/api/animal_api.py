@@ -7,41 +7,23 @@
 
 import configparser
 from urllib.request import urlopen
-from urllib.parse import urlencode
 from urllib.error import URLError
 from xml.etree import ElementTree
+
+from app.api.common import make_response, make_url
 
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 
-def make_response(info_data: dict, response_data: dict=dict(), req_param: dict= dict()):
-    response = dict()
-    response['param'] = req_param
-    response['info'] = info_data
-    response['rslt'] = response_data
-
-    return response
-
-def make_url(basic_url: str, query_data: dict):
-    full_url = basic_url + "?"
-    len_query = len(query_data)
-
-    for index, (key, value) in enumerate(query_data.items()):
-        if index == len_query-1:
-            full_url += key + "=" + value
-        else:
-            full_url += key + "=" + value + "&"
-
-    return full_url
 
 def get_sido(querys):
-    url = config['API']['URL_SIDO']
+    url = config['ANIMAL_API']['URL_BASE'] + config['ANIMAL_API']['URL_SIDO']
 
     query_data = dict()
     for key, value in querys.items():
         query_data[key] = value
 
-    query_data['serviceKey'] = config['API']['APP_KEY']
+    query_data['serviceKey'] = config['ANIMAL_API']['APP_KEY']
     full_url = make_url(url, query_data)
 
     try:
@@ -76,9 +58,8 @@ def get_sido(querys):
         return e.reason
 
 
-
 def get_sigungu(querys):
-    url = config['API']['URL_SIGUNGU']
+    url = config['ANIMAL_API']['URL_BASE'] + config['ANIMAL_API']['URL_SIGUNGU']
 
     query_data = dict()
     for key, value in querys.items():
@@ -86,7 +67,7 @@ def get_sigungu(querys):
 
     req_param = query_data.copy()
 
-    query_data['serviceKey'] = config['API']['APP_KEY']
+    query_data['serviceKey'] = config['ANIMAL_API']['APP_KEY']
     full_url = make_url(url, query_data)
 
     try:
@@ -98,9 +79,6 @@ def get_sigungu(querys):
         info = dict()
         info['resultCode'] = root_element.find('header').find('resultCode').text
         info['resultMsg'] = root_element.find('header').find('resultMsg').text
-        info['numOfRows'] = root_element.find('body').find('numOfRows').text
-        info['pageNo'] = root_element.find('body').find('pageNo').text
-        info['totalCount'] = root_element.find('body').find('totalCount').text
 
         rslts = []
         iter_element = root_element.iter(tag='item')
@@ -112,7 +90,7 @@ def get_sigungu(querys):
 
             rslts.append(rslt)
 
-        response = make_response(response_data=rslts, req_param=req_param)
+        response = make_response(response_data=rslts, req_param=req_param, info_data=info)
 
         return response
     except URLError as e:
@@ -121,14 +99,14 @@ def get_sigungu(querys):
 
 
 def get_shelter(querys):
-    url = config['API']['URL_SHELTER']
+    url = config['ANIMAL_API']['URL_BASE'] + config['ANIMAL_API']['URL_SHELTER']
 
     query_data = dict()
     for key, value in querys.items():
         query_data[key] = value
     req_param = query_data.copy()
 
-    query_data['serviceKey'] = config['API']['APP_KEY']
+    query_data['serviceKey'] = config['ANIMAL_API']['APP_KEY']
     full_url = make_url(url, query_data)
 
     try:
@@ -140,9 +118,6 @@ def get_shelter(querys):
         info = dict()
         info['resultCode'] = root_element.find('header').find('resultCode').text
         info['resultMsg'] = root_element.find('header').find('resultMsg').text
-        info['numOfRows'] = root_element.find('body').find('numOfRows').text
-        info['pageNo'] = root_element.find('body').find('pageNo').text
-        info['totalCount'] = root_element.find('body').find('totalCount').text
 
         rslts = []
         iter_element = root_element.iter(tag='item')
@@ -153,7 +128,7 @@ def get_shelter(querys):
             rslt['careRegNo'] = element.find('careRegNo').text
             rslts.append(rslt)
 
-        response = make_response(response_data=rslts, req_param=req_param)
+        response = make_response(response_data=rslts, req_param=req_param, info_data=info)
 
         return response
     except URLError as e:
@@ -162,14 +137,14 @@ def get_shelter(querys):
 
 
 def get_kind(querys):
-    url = config['API']['URL_KIND']
+    url = config['ANIMAL_API']['URL_BASE'] + config['ANIMAL_API']['URL_KIND']
 
     query_data = dict()
     for key, value in querys.items():
         query_data[key] = value
     req_param = query_data.copy()
 
-    query_data['serviceKey'] = config['API']['APP_KEY']
+    query_data['serviceKey'] = config['ANIMAL_API']['APP_KEY']
     full_url = make_url(url, query_data)
 
     try:
@@ -182,9 +157,6 @@ def get_kind(querys):
         info = dict()
         info['resultCode'] = root_element.find('header').find('resultCode').text
         info['resultMsg'] = root_element.find('header').find('resultMsg').text
-        info['numOfRows'] = root_element.find('body').find('numOfRows').text
-        info['pageNo'] = root_element.find('body').find('pageNo').text
-        info['totalCount'] = root_element.find('body').find('totalCount').text
 
         rslts = []
         iter_element = root_element.iter(tag='item')
@@ -195,7 +167,7 @@ def get_kind(querys):
             rslt['kindCd'] = element.find('kindCd').text
             rslts.append(rslt)
 
-        response = make_response(response_data=rslts, req_param=req_param)
+        response = make_response(response_data=rslts, req_param=req_param,info_data=info)
 
         return response
     except URLError as e:
@@ -204,14 +176,14 @@ def get_kind(querys):
 
 
 def get_abandonment(querys):
-    url = config['API']['URL_ABANDONMENT']
+    url = config['ANIMAL_API']['URL_BASE'] + config['ANIMAL_API']['URL_ABANDONMENT']
 
     query_data = dict()
     for key, value in querys.items():
         query_data[key] = value
 
     req_param = query_data.copy()
-    query_data['serviceKey'] = config['API']['APP_KEY']
+    query_data['serviceKey'] = config['ANIMAL_API']['APP_KEY']
     full_url = make_url(url, query_data)
 
     try:
