@@ -20,9 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a4fa793-9907-45fe-b859-6dce15dffea0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/config/DevConfig.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/ProdConfig.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/app_config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/animal_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/animal_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/shelter_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/shelter_api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/animal/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/animal/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/ref.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config/ref.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,10 +163,10 @@
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
     <state x="488" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2048.1051@0.23.2048.1051" timestamp="1604640959721" />
-    <state x="250" y="302" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604618549662">
+    <state x="250" y="302" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605483427290">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state x="250" y="302" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.2048.1051@0.23.2048.1051" timestamp="1604618549662" />
+    <state x="250" y="302" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.2048.1051@0.23.2048.1051" timestamp="1605483427290" />
     <state x="397" y="308" key="#xdebugger.XInspectDialog" timestamp="1604963616972">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>

@@ -12,3 +12,11 @@ https://www.data.go.kr/data/15025454/standard.do
 
 유기동물 습득시:
 https://www.animal.go.kr/front/community/show.do?boardId=contents&seq=209&menuNo=1000000056
+
+
+REF_SITE(django rest framework):
+https://www.django-rest-framework.org/tutorial/1-serialization/
+
+
+세팅 파일 설정
+https://docs.djangoproject.com/en/2.1/topics/settings/#envvar-DJANGO_SETTINGS_MODULE
