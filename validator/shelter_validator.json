@@ -1,0 +1,16 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "upr_cd": {
+            "type": "string"
+        },
+        "org_cd": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "org_cd",
+        "upr_cd"
+    ]
+}
