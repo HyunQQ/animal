@@ -20,15 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a4fa793-9907-45fe-b859-6dce15dffea0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/validator/abandonment_validator.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/validator/kind_validator.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/validator/shelter_detail_validator.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/validator/shelter_validator.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/validator/sido_validator.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/validator/sigungu_validator.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/decorator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/sample_param/abadonemnt.json" beforeDir="false" afterPath="$PROJECT_DIR$/validator/sample_param/abandonemnt.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/sample_param/sido.json" beforeDir="false" afterPath="$PROJECT_DIR$/validator/sample_param/sido.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,22 +196,22 @@
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
     <state width="2027" height="355" key="GridCell.Tab.-1.right/0.23.2048.1051@0.23.2048.1051" timestamp="1605137617273" />
-    <state width="2027" height="288" key="GridCell.Tab.0.bottom" timestamp="1605492311892">
+    <state width="2027" height="355" key="GridCell.Tab.0.bottom" timestamp="1605510204419">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state width="2027" height="288" key="GridCell.Tab.0.bottom/0.23.2048.1051@0.23.2048.1051" timestamp="1605492311892" />
-    <state width="2027" height="288" key="GridCell.Tab.0.center" timestamp="1605492311892">
+    <state width="2027" height="355" key="GridCell.Tab.0.bottom/0.23.2048.1051@0.23.2048.1051" timestamp="1605510204419" />
+    <state width="2027" height="355" key="GridCell.Tab.0.center" timestamp="1605510204418">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state width="2027" height="288" key="GridCell.Tab.0.center/0.23.2048.1051@0.23.2048.1051" timestamp="1605492311892" />
-    <state width="2027" height="288" key="GridCell.Tab.0.left" timestamp="1605492311891">
+    <state width="2027" height="355" key="GridCell.Tab.0.center/0.23.2048.1051@0.23.2048.1051" timestamp="1605510204418" />
+    <state width="2027" height="355" key="GridCell.Tab.0.left" timestamp="1605510204417">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state width="2027" height="288" key="GridCell.Tab.0.left/0.23.2048.1051@0.23.2048.1051" timestamp="1605492311891" />
-    <state width="2027" height="288" key="GridCell.Tab.0.right" timestamp="1605492311892">
+    <state width="2027" height="355" key="GridCell.Tab.0.left/0.23.2048.1051@0.23.2048.1051" timestamp="1605510204417" />
+    <state width="2027" height="355" key="GridCell.Tab.0.right" timestamp="1605510204418">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state width="2027" height="288" key="GridCell.Tab.0.right/0.23.2048.1051@0.23.2048.1051" timestamp="1605492311892" />
+    <state width="2027" height="355" key="GridCell.Tab.0.right/0.23.2048.1051@0.23.2048.1051" timestamp="1605510204418" />
     <state width="2027" height="355" key="GridCell.Tab.1.bottom" timestamp="1605137592593">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>

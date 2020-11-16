@@ -1,14 +1,16 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets, permissions, status
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
 
 from app.models import AnimalUser
 from app.api.serializers import UserSerializer, AnimalUserSerializer
 from app.api.animal_api import get_sido, get_kind, get_shelter, get_sigungu, get_abandonment
 from app.api.shelter_api import get_shelter_detail
 from app.api.common import get_querys
+from app.api.decorator import param_validator
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
@@ -29,7 +31,6 @@ class UserViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         instance.first_name = request.data.first_name
 
-
 class AnimalUserViewSet(viewsets.ModelViewSet):
     queryset = AnimalUser.objects.all().order_by('-created_at')
     permission_classes = [
@@ -37,13 +38,19 @@ class AnimalUserViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = AnimalUserSerializer
 
+
+#CBV
 class SidoList(APIView):
+
+    @param_validator
     def get(self, request):
         querys = get_querys(request)
         rslt = get_sido(querys)
         return Response(rslt)
 
+
 class SiGunGuList(APIView):
+    # @ParamValidator
     def get(self, request):
         querys = get_querys(request)
         # sido_code = request.query_params.get('upr_cd')
@@ -57,6 +64,7 @@ class SiGunGuList(APIView):
 
 
 class ShelterList(APIView):
+    # @ParamValidator
     def get(self, request):
         querys = get_querys(request)
 
@@ -72,6 +80,7 @@ class ShelterList(APIView):
 
 
 class KindList(APIView):
+    # @ParamValidator
     def get(self, request):
         querys = get_querys(request)
 
@@ -84,6 +93,7 @@ class KindList(APIView):
 
 
 class AbandonmentList(APIView):
+    # @ParamValidator
     def get(self, request):
         querys = dict()
         for key, value in request.query_params.items():
@@ -94,6 +104,7 @@ class AbandonmentList(APIView):
 
 
 class ShelterDetail(APIView):
+    # @ParamValidator
     def get(self, request):
         querys = dict()
         for key, value in request.query_params.items():
@@ -101,3 +112,21 @@ class ShelterDetail(APIView):
 
         rslt = get_shelter_detail(querys)
         return Response(rslt)
+
+
+
+# FBV
+# @api_view(['GET'])
+# @param_validator
+# def test_api(request):
+#     return Response({'test':'test work'})
+
+
+@api_view(['GET'])
+@param_validator
+def sido_list(request):
+    querys = get_querys(request)
+    rslt = get_sido(querys)
+    return Response(rslt)
+
+
