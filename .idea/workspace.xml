@@ -20,7 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a4fa793-9907-45fe-b859-6dce15dffea0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/validator/sample_param/abadonemnt.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/validator/sample_param/kind.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/validator/sample_param/shelter.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/validator/sample_param/shelter_detail.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/validator/sample_param/sido.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/validator/sample_param/sigungu.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/app_config.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,11 +60,11 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/api" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\hyunq\Desktop\animal_prj\animal\app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/api" />
     </key>
   </component>
   <component name="RunManager" selected="Python.manage">
@@ -155,6 +163,10 @@
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
     <state x="488" y="210" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2048.1051@0.23.2048.1051" timestamp="1604640959721" />
+    <state x="747" y="357" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605486028952">
+      <screen x="0" y="23" width="2048" height="1051" />
+    </state>
+    <state x="747" y="357" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2048.1051@0.23.2048.1051" timestamp="1605486028952" />
     <state x="250" y="302" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605483427290">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
@@ -188,22 +200,22 @@
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
     <state width="2027" height="355" key="GridCell.Tab.-1.right/0.23.2048.1051@0.23.2048.1051" timestamp="1605137617273" />
-    <state width="2027" height="288" key="GridCell.Tab.0.bottom" timestamp="1605138020880">
+    <state width="2027" height="288" key="GridCell.Tab.0.bottom" timestamp="1605492311892">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state width="2027" height="288" key="GridCell.Tab.0.bottom/0.23.2048.1051@0.23.2048.1051" timestamp="1605138020880" />
-    <state width="2027" height="288" key="GridCell.Tab.0.center" timestamp="1605138020879">
+    <state width="2027" height="288" key="GridCell.Tab.0.bottom/0.23.2048.1051@0.23.2048.1051" timestamp="1605492311892" />
+    <state width="2027" height="288" key="GridCell.Tab.0.center" timestamp="1605492311892">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state width="2027" height="288" key="GridCell.Tab.0.center/0.23.2048.1051@0.23.2048.1051" timestamp="1605138020879" />
-    <state width="2027" height="288" key="GridCell.Tab.0.left" timestamp="1605138020879">
+    <state width="2027" height="288" key="GridCell.Tab.0.center/0.23.2048.1051@0.23.2048.1051" timestamp="1605492311892" />
+    <state width="2027" height="288" key="GridCell.Tab.0.left" timestamp="1605492311891">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state width="2027" height="288" key="GridCell.Tab.0.left/0.23.2048.1051@0.23.2048.1051" timestamp="1605138020879" />
-    <state width="2027" height="288" key="GridCell.Tab.0.right" timestamp="1605138020880">
+    <state width="2027" height="288" key="GridCell.Tab.0.left/0.23.2048.1051@0.23.2048.1051" timestamp="1605492311891" />
+    <state width="2027" height="288" key="GridCell.Tab.0.right" timestamp="1605492311892">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state width="2027" height="288" key="GridCell.Tab.0.right/0.23.2048.1051@0.23.2048.1051" timestamp="1605138020880" />
+    <state width="2027" height="288" key="GridCell.Tab.0.right/0.23.2048.1051@0.23.2048.1051" timestamp="1605492311892" />
     <state width="2027" height="355" key="GridCell.Tab.1.bottom" timestamp="1605137592593">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
@@ -241,9 +253,9 @@
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
     <state x="724" y="145" width="600" height="807" key="find.popup/0.23.2048.1051@0.23.2048.1051" timestamp="1605227243297" />
-    <state x="689" y="256" width="670" height="676" key="search.everywhere.popup" timestamp="1604965155036">
+    <state x="689" y="256" width="670" height="676" key="search.everywhere.popup" timestamp="1605488362108">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state x="689" y="256" width="670" height="676" key="search.everywhere.popup/0.23.2048.1051@0.23.2048.1051" timestamp="1604965155036" />
+    <state x="689" y="256" width="670" height="676" key="search.everywhere.popup/0.23.2048.1051@0.23.2048.1051" timestamp="1605488362108" />
   </component>
 </project>
