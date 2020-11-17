@@ -9,7 +9,8 @@ from urllib.request import urlopen
 from urllib.error import URLError
 from xml.etree import ElementTree
 
-from app.api.common import make_response, make_url
+from app.common.common import make_url
+from app.common.result import make_response_content
 
 config = configparser.ConfigParser()
 config.read('config/config.ini')
@@ -22,6 +23,7 @@ def get_shelter_detail(querys):
     for key, value in querys.items():
         query_data[key] = value
 
+    req_param = query_data.copy()
     query_data['serviceKey'] = config['SHELTER_API']['APP_KEY']
     full_url = make_url(url, query_data)
 
@@ -74,9 +76,12 @@ def get_shelter_detail(querys):
 
             rslts.append(rslt)
 
-        response = make_response(response_data=rslts, info_data=info)
+        response = make_response_content(response_data=rslts, req_param=req_param, info_data=info)
 
         return response
     except URLError as e:
-        print(e.reason)
-        return e.reason
+        reponse_data = {
+            'Open API Server Error': e.reason
+        }
+        response = make_response_content(response_data=reponse_data, req_param=req_param)
+        return response

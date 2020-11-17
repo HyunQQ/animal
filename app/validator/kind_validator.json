@@ -1,0 +1,12 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "up_kind_cd": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "up_kind_cd"
+    ]
+}

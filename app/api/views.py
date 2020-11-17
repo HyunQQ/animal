@@ -1,14 +1,17 @@
 from django.contrib.auth.models import User
 from rest_framework import viewsets, permissions, status
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view
 from rest_framework.response import Response
-from rest_framework.views import APIView
+# from rest_framework.views import APIView
 
 from app.models import AnimalUser
 from app.api.serializers import UserSerializer, AnimalUserSerializer
 from app.api.animal_api import get_sido, get_kind, get_shelter, get_sigungu, get_abandonment
 from app.api.shelter_api import get_shelter_detail
-from app.api.common import get_querys
+from app.common.common import get_querys
+from app.common.decorator import param_validator
+from app.common.result import ok, error
+
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
@@ -37,67 +40,149 @@ class AnimalUserViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = AnimalUserSerializer
 
-class SidoList(APIView):
-    def get(self, request):
-        querys = get_querys(request)
-        rslt = get_sido(querys)
-        return Response(rslt)
 
-class SiGunGuList(APIView):
-    def get(self, request):
-        querys = get_querys(request)
-        # sido_code = request.query_params.get('upr_cd')
+# FBV
+@api_view(['GET'])
+@param_validator
+def sido(request):
+    querys = get_querys(request)
+    rslt = get_sido(querys)
+    if not isinstance(rslt['rslt'], list):
+        return error(rslt, msg="Open API Server Error")
 
-        if 'upr_cd' not in querys.keys():
-            content = {'please check sido': 'need to input upr_cd information'}
-            return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        else:
-            rslt = get_sigungu(querys)
-            return Response(rslt)
+    return ok(rslt)
 
 
-class ShelterList(APIView):
-    def get(self, request):
-        querys = get_querys(request)
-
-        if 'upr_cd' not in querys.keys():
-            content = {'Check sido information': 'Need to input upr_cd information'}
-            return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        elif 'org_cd' not in querys.keys():
-            content = {'Check sigungu information': 'Need to input org_cd information'}
-            return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        else:
-            rslt = get_shelter(querys)
-            return Response(rslt)
 
 
-class KindList(APIView):
-    def get(self, request):
-        querys = get_querys(request)
+@api_view(['GET'])
+@param_validator
+def sigungu(request):
+    querys = get_querys(request)
+    rslt = get_sigungu(querys)
+    if not isinstance(rslt['rslt'], list):
+        return error(rslt, msg="Open API Server Error")
 
-        if 'up_kind_cd' not in querys.keys():
-            content = {'Check kind information': 'Need to input up_kind_cd information'}
-            return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        else:
-            rslt = get_kind(querys)
-            return Response(rslt)
-
-
-class AbandonmentList(APIView):
-    def get(self, request):
-        querys = dict()
-        for key, value in request.query_params.items():
-            querys[key] = value
-
-        rslt = get_abandonment(querys)
-        return Response(rslt)
+    return ok(rslt)
 
 
-class ShelterDetail(APIView):
-    def get(self, request):
-        querys = dict()
-        for key, value in request.query_params.items():
-            querys[key] = value
+@api_view(['GET'])
+@param_validator
+def shelter(request):
+    querys = get_querys(request)
+    rslt = get_shelter(querys)
+    if not isinstance(rslt['rslt'], list):
+        return error(rslt, msg="Open API Server Error")
 
-        rslt = get_shelter_detail(querys)
-        return Response(rslt)
+    return ok(rslt)
+
+
+@api_view(['GET'])
+@param_validator
+def shelter_detail(request):
+    querys = get_querys(request)
+    rslt = get_shelter_detail(querys)
+    if not isinstance(rslt['rslt'], list):
+        return error(rslt, msg="Open API Server Error")
+
+    return ok(rslt)
+
+
+@api_view(['GET'])
+@param_validator
+def kind(request):
+    querys = get_querys(request)
+    rslt = get_kind(querys)
+    if not isinstance(rslt['rslt'], list):
+        return error(rslt, msg="Open API Server Error")
+
+    return ok(rslt)
+
+
+@api_view(['GET'])
+@param_validator
+def abandonment(request):
+    querys = get_querys(request)
+    rslt = get_abandonment(querys)
+    if not isinstance(rslt['rslt'], list):
+        return error(rslt, msg="Open API Server Error")
+
+    return ok(rslt)
+
+
+#CBV
+# class SidoList(APIView):
+#
+#     @param_validator
+#     def get(self, request):
+#         querys = get_querys(request)
+#         rslt = get_sido(querys)
+#         return Response(rslt)
+#
+#
+# class SiGunGuList(APIView):
+#     # @ParamValidator
+#     def get(self, request):
+#         querys = get_querys(request)
+#         # sido_code = request.query_params.get('upr_cd')
+#
+#         if 'upr_cd' not in querys.keys():
+#             content = {'please check sido': 'need to input upr_cd information'}
+#             return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+#         else:
+#             rslt = get_sigungu(querys)
+#             return Response(rslt)
+#
+#
+# class ShelterList(APIView):
+#     # @ParamValidator
+#     def get(self, request):
+#         querys = get_querys(request)
+#
+#         if 'upr_cd' not in querys.keys():
+#             content = {'Check sido information': 'Need to input upr_cd information'}
+#             return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+#         elif 'org_cd' not in querys.keys():
+#             content = {'Check sigungu information': 'Need to input org_cd information'}
+#             return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+#         else:
+#             rslt = get_shelter(querys)
+#             return Response(rslt)
+#
+#
+# class KindList(APIView):
+#     # @ParamValidator
+#     def get(self, request):
+#         querys = get_querys(request)
+#
+#         if 'up_kind_cd' not in querys.keys():
+#             content = {'Check kind information': 'Need to input up_kind_cd information'}
+#             return Response(content, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+#         else:
+#             rslt = get_kind(querys)
+#             return Response(rslt)
+#
+#
+# class AbandonmentList(APIView):
+#     # @ParamValidator
+#     def get(self, request):
+#         querys = dict()
+#         for key, value in request.query_params.items():
+#             querys[key] = value
+#
+#         rslt = get_abandonment(querys)
+#         return Response(rslt)
+#
+#
+# class ShelterDetail(APIView):
+#     # @ParamValidator
+#     def get(self, request):
+#         querys = dict()
+#         for key, value in request.query_params.items():
+#             querys[key] = value
+#
+#         rslt = get_shelter_detail(querys)
+#         return Response(rslt)
+#
+
+
