@@ -1,22 +1,23 @@
-<경기도 야생동물 구조치료 기관 현황>
+경기도 야생동물 구조치료 기관 현황:
 https://data.gg.go.kr/portal/data/service/selectServicePage.do?page=1&rows=10&sortColumn=&sortDirection=&infId=D324WE5MXS75EA640OQ4988421&infSeq=3&order=&loc=&searchWord=%EC%95%BC%EC%83%9D%EB%8F%99%EB%AC%BC+%EA%B5%AC%EC%A1%B0%EC%B9%98%EB%A3%8C%EA%B8%B0%EA%B4%80+%ED%98%84%ED%99%A9
 
-<농림축산검역본부_동물보호센터 정보>
+농림축산검역본부_동물보호센터 정보:
 https://www.data.go.kr/iim/api/selectAPIAcountView.do
 
-전국야생동물구조센터정보표준데이터
+전국야생동물구조센터정보표준데이터:
 https://www.data.go.kr/data/15025453/standard.do
 
-전국동물보호센터정보표준데이터
+전국동물보호센터정보표준데이터:
 https://www.data.go.kr/data/15025454/standard.do
 
 유기동물 습득시:
 https://www.animal.go.kr/front/community/show.do?boardId=contents&seq=209&menuNo=1000000056
 
-
 REF_SITE(django rest framework):
 https://www.django-rest-framework.org/tutorial/1-serialization/
 
-
-세팅 파일 설정
+세팅 파일 설정:
 https://docs.djangoproject.com/en/2.1/topics/settings/#envvar-DJANGO_SETTINGS_MODULE
+
+JSON Validator:
+https://github.com/mcchae/JSON-Schema/blob/master/JSON-API.md
