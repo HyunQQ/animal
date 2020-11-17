@@ -1,0 +1,52 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "numOfRows": {
+            "type": "string"
+        },
+        "pageNo": {
+            "type": "string"
+        },
+        "bgnde": {
+            "type": "string"
+        },
+        "endde": {
+            "type": "string"
+        },
+        "upkind": {
+            "type": "string"
+        },
+        "kind": {
+            "type": "string"
+        },
+        "upr_cd": {
+            "type": "string"
+        },
+        "org_cd": {
+            "type": "string"
+        },
+        "care_reg_no": {
+            "type": "string"
+        },
+        "state": {
+            "type": "string"
+        },
+        "neuter_yn": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "bgnde",
+        "care_reg_no",
+        "endde",
+        "kind",
+        "neuter_yn",
+        "numOfRows",
+        "org_cd",
+        "pageNo",
+        "state",
+        "upkind",
+        "upr_cd"
+    ]
+}

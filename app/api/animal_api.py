@@ -2,46 +2,29 @@
     유기동물 api 정의
     5hyunq
     2020.11.01
-    sample url: http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/sido?serviceKey=[secret key]
 """
 
 import configparser
 from urllib.request import urlopen
-from urllib.parse import urlencode
 from urllib.error import URLError
 from xml.etree import ElementTree
+
+from app.common.common import make_url
+from app.common.result import make_response_content
 
 config = configparser.ConfigParser()
 config.read('config/config.ini')
 
-def make_response(info_data: dict, response_data: dict=dict(), req_param: dict= dict()):
-    response = dict()
-    response['param'] = req_param
-    response['info'] = info_data
-    response['rslt'] = response_data
-
-    return response
-
-def make_url(basic_url: str, query_data: dict):
-    full_url = basic_url + "?"
-    len_query = len(query_data)
-
-    for index, (key, value) in enumerate(query_data.items()):
-        if index == len_query-1:
-            full_url += key + "=" + value
-        else:
-            full_url += key + "=" + value + "&"
-
-    return full_url
 
 def get_sido(querys):
-    url = config['API']['URL_SIDO']
+    url = config['ANIMAL_API']['URL_BASE'] + config['ANIMAL_API']['URL_SIDO']
 
     query_data = dict()
     for key, value in querys.items():
         query_data[key] = value
 
-    query_data['serviceKey'] = config['API']['APP_KEY']
+    req_param = query_data.copy()
+    query_data['serviceKey'] = config['ANIMAL_API']['APP_KEY']
     full_url = make_url(url, query_data)
 
     try:
@@ -68,17 +51,19 @@ def get_sido(querys):
 
             rslts.append(rslt)
 
-        response = make_response(response_data = rslts, info_data=info)
+        response = make_response_content(response_data = rslts, req_param=req_param, info_data=info)
 
         return response
     except URLError as e:
-        print(e.reason)
-        return e.reason
-
+        reponse_data = {
+            'Open API Server Error' : e.reason
+        }
+        response = make_response_content(response_data= reponse_data, req_param=req_param)
+        return response
 
 
 def get_sigungu(querys):
-    url = config['API']['URL_SIGUNGU']
+    url = config['ANIMAL_API']['URL_BASE'] + config['ANIMAL_API']['URL_SIGUNGU']
 
     query_data = dict()
     for key, value in querys.items():
@@ -86,7 +71,7 @@ def get_sigungu(querys):
 
     req_param = query_data.copy()
 
-    query_data['serviceKey'] = config['API']['APP_KEY']
+    query_data['serviceKey'] = config['ANIMAL_API']['APP_KEY']
     full_url = make_url(url, query_data)
 
     try:
@@ -109,23 +94,26 @@ def get_sigungu(querys):
 
             rslts.append(rslt)
 
-        response = make_response(response_data=rslts, req_param=req_param)
+        response = make_response_content(response_data=rslts, req_param=req_param, info_data=info)
 
         return response
     except URLError as e:
-        print(e.reason)
-        return e.reason
+        reponse_data = {
+            'Open API Server Error': e.reason
+        }
+        response = make_response_content(response_data=reponse_data, req_param=req_param)
+        return response
 
 
 def get_shelter(querys):
-    url = config['API']['URL_SHELTER']
+    url = config['ANIMAL_API']['URL_BASE'] + config['ANIMAL_API']['URL_SHELTER']
 
     query_data = dict()
     for key, value in querys.items():
         query_data[key] = value
     req_param = query_data.copy()
 
-    query_data['serviceKey'] = config['API']['APP_KEY']
+    query_data['serviceKey'] = config['ANIMAL_API']['APP_KEY']
     full_url = make_url(url, query_data)
 
     try:
@@ -147,23 +135,26 @@ def get_shelter(querys):
             rslt['careRegNo'] = element.find('careRegNo').text
             rslts.append(rslt)
 
-        response = make_response(response_data=rslts, req_param=req_param)
+        response = make_response_content(response_data=rslts, req_param=req_param, info_data=info)
 
         return response
     except URLError as e:
-        print(e.reason)
-        return e.reason
+        reponse_data = {
+            'Open API Server Error': e.reason
+        }
+        response = make_response_content(response_data=reponse_data, req_param=req_param)
+        return response
 
 
 def get_kind(querys):
-    url = config['API']['URL_KIND']
+    url = config['ANIMAL_API']['URL_BASE'] + config['ANIMAL_API']['URL_KIND']
 
     query_data = dict()
     for key, value in querys.items():
         query_data[key] = value
     req_param = query_data.copy()
 
-    query_data['serviceKey'] = config['API']['APP_KEY']
+    query_data['serviceKey'] = config['ANIMAL_API']['APP_KEY']
     full_url = make_url(url, query_data)
 
     try:
@@ -186,23 +177,26 @@ def get_kind(querys):
             rslt['kindCd'] = element.find('kindCd').text
             rslts.append(rslt)
 
-        response = make_response(response_data=rslts, req_param=req_param)
+        response = make_response_content(response_data=rslts, req_param=req_param,info_data=info)
 
         return response
     except URLError as e:
-        print(e.reason)
-        return e.reason
+        reponse_data = {
+            'Open API Server Error': e.reason
+        }
+        response = make_response_content(response_data=reponse_data, req_param=req_param)
+        return response
 
 
 def get_abandonment(querys):
-    url = config['API']['URL_ABANDONMENT']
+    url = config['ANIMAL_API']['URL_BASE'] + config['ANIMAL_API']['URL_ABANDONMENT']
 
     query_data = dict()
     for key, value in querys.items():
         query_data[key] = value
 
     req_param = query_data.copy()
-    query_data['serviceKey'] = config['API']['APP_KEY']
+    query_data['serviceKey'] = config['ANIMAL_API']['APP_KEY']
     full_url = make_url(url, query_data)
 
     try:
@@ -248,10 +242,14 @@ def get_abandonment(querys):
 
             rslts.append(rslt)
 
-        response = make_response(response_data=rslts, req_param=req_param, info_data = info)
+        response = make_response_content(response_data=rslts, req_param=req_param, info_data = info)
         return response
 
     except URLError as e:
-        print(e.reason)
-        return e.reason
+        reponse_data = {
+            'Open API Server Error': e.reason
+        }
+        response = make_response_content(response_data=reponse_data, req_param=req_param)
+        return response
+
 
