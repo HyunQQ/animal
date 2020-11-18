@@ -5,12 +5,11 @@
 """
 
 import datetime
-
 from rest_framework import status
 from rest_framework.response import Response
 
 
-def make_response_content(info_data: dict, response_data: dict=dict(), req_param: dict= dict()):
+def make_response_content(info_data: dict, response_data: dict = dict(), req_param: dict = dict()):
     response_content = {
         'param' : req_param,
         'info'  : info_data,

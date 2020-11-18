@@ -21,3 +21,7 @@ https://docs.djangoproject.com/en/2.1/topics/settings/#envvar-DJANGO_SETTINGS_MO
 
 JSON Validator:
 https://github.com/mcchae/JSON-Schema/blob/master/JSON-API.md
+
+Django TEST:
+https://developer.mozilla.org/ko/docs/Learn/Server-side/Django/Testing
+https://wikidocs.net/11057

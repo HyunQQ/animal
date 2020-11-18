@@ -20,29 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a4fa793-9907-45fe-b859-6dce15dffea0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/common/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/common/decorator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/common/result.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/animal_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/animal_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/common/common.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/decorator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/shelter_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/shelter_api.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/api/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/ref.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config/ref.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/abandonment_validator.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/validator/abandonment_validator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/kind_validator.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/validator/kind_validator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/sample_param/abandonemnt.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/validator/sample_param/abandonemnt.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/sample_param/kind.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/validator/sample_param/kind.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/sample_param/shelter.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/validator/sample_param/shelter.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/sample_param/shelter_detail.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/validator/sample_param/shelter_detail.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/sample_param/sido.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/validator/sample_param/sido.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/sample_param/sigungu.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/validator/sample_param/sigungu.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/shelter_detail_validator.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/validator/shelter_detail_validator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/shelter_validator.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/validator/shelter_validator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/sido_validator.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/validator/sido_validator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator/sigungu_validator.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/validator/sigungu_validator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/common/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/common/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/common/decorator.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/common/decorator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/common/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/common/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/validator/abandonment_validator.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/validator/abandonment_validator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/DevConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/DevConfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/ProdConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/ProdConfig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/app_config.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,22 +205,22 @@
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
     <state width="2027" height="355" key="GridCell.Tab.-1.right/0.23.2048.1051@0.23.2048.1051" timestamp="1605137617273" />
-    <state width="2027" height="355" key="GridCell.Tab.0.bottom" timestamp="1605577518242">
+    <state width="2027" height="355" key="GridCell.Tab.0.bottom" timestamp="1605674575692">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state width="2027" height="355" key="GridCell.Tab.0.bottom/0.23.2048.1051@0.23.2048.1051" timestamp="1605577518242" />
-    <state width="2027" height="355" key="GridCell.Tab.0.center" timestamp="1605577518242">
+    <state width="2027" height="355" key="GridCell.Tab.0.bottom/0.23.2048.1051@0.23.2048.1051" timestamp="1605674575692" />
+    <state width="2027" height="355" key="GridCell.Tab.0.center" timestamp="1605674575691">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state width="2027" height="355" key="GridCell.Tab.0.center/0.23.2048.1051@0.23.2048.1051" timestamp="1605577518242" />
-    <state width="2027" height="355" key="GridCell.Tab.0.left" timestamp="1605577518241">
+    <state width="2027" height="355" key="GridCell.Tab.0.center/0.23.2048.1051@0.23.2048.1051" timestamp="1605674575691" />
+    <state width="2027" height="355" key="GridCell.Tab.0.left" timestamp="1605674575690">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state width="2027" height="355" key="GridCell.Tab.0.left/0.23.2048.1051@0.23.2048.1051" timestamp="1605577518241" />
-    <state width="2027" height="355" key="GridCell.Tab.0.right" timestamp="1605577518242">
+    <state width="2027" height="355" key="GridCell.Tab.0.left/0.23.2048.1051@0.23.2048.1051" timestamp="1605674575690" />
+    <state width="2027" height="355" key="GridCell.Tab.0.right" timestamp="1605674575691">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state width="2027" height="355" key="GridCell.Tab.0.right/0.23.2048.1051@0.23.2048.1051" timestamp="1605577518242" />
+    <state width="2027" height="355" key="GridCell.Tab.0.right/0.23.2048.1051@0.23.2048.1051" timestamp="1605674575691" />
     <state width="2027" height="355" key="GridCell.Tab.1.bottom" timestamp="1605137592593">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
@@ -261,17 +250,17 @@
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
     <state x="812" y="469" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.2048.1051@0.23.2048.1051" timestamp="1604016382376" />
-    <state x="581" y="284" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1604619788592">
+    <state x="581" y="284" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1605659751619">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state x="581" y="284" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.2048.1051@0.23.2048.1051" timestamp="1604619788592" />
+    <state x="581" y="284" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.23.2048.1051@0.23.2048.1051" timestamp="1605659751619" />
     <state x="724" y="145" width="600" height="807" key="find.popup" timestamp="1605227243297">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
     <state x="724" y="145" width="600" height="807" key="find.popup/0.23.2048.1051@0.23.2048.1051" timestamp="1605227243297" />
-    <state x="689" y="256" width="670" height="676" key="search.everywhere.popup" timestamp="1605488362108">
+    <state x="689" y="256" width="670" height="676" key="search.everywhere.popup" timestamp="1605663913737">
       <screen x="0" y="23" width="2048" height="1051" />
     </state>
-    <state x="689" y="256" width="670" height="676" key="search.everywhere.popup/0.23.2048.1051@0.23.2048.1051" timestamp="1605488362108" />
+    <state x="689" y="256" width="670" height="676" key="search.everywhere.popup/0.23.2048.1051@0.23.2048.1051" timestamp="1605663913737" />
   </component>
 </project>
