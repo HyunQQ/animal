@@ -37,16 +37,5 @@
         }
     },
     "required": [
-        "bgnde",
-        "care_reg_no",
-        "endde",
-        "kind",
-        "neuter_yn",
-        "numOfRows",
-        "org_cd",
-        "pageNo",
-        "state",
-        "upkind",
-        "upr_cd"
     ]
 }

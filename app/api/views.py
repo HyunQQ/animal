@@ -1,3 +1,5 @@
+import logging
+from pprint import pformat
 from django.contrib.auth.models import User
 from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import action, api_view
@@ -48,11 +50,10 @@ def sido(request):
     querys = get_querys(request)
     rslt = get_sido(querys)
     if not isinstance(rslt['rslt'], list):
+        logging.error(pformat(rslt['rslt']))
         return error(rslt, msg="Open API Server Error")
 
     return ok(rslt)
-
-
 
 
 @api_view(['GET'])
@@ -61,6 +62,7 @@ def sigungu(request):
     querys = get_querys(request)
     rslt = get_sigungu(querys)
     if not isinstance(rslt['rslt'], list):
+        logging.error(pformat(rslt['rslt']))
         return error(rslt, msg="Open API Server Error")
 
     return ok(rslt)
@@ -72,6 +74,7 @@ def shelter(request):
     querys = get_querys(request)
     rslt = get_shelter(querys)
     if not isinstance(rslt['rslt'], list):
+        logging.error(pformat(rslt['rslt']))
         return error(rslt, msg="Open API Server Error")
 
     return ok(rslt)
@@ -83,6 +86,7 @@ def shelter_detail(request):
     querys = get_querys(request)
     rslt = get_shelter_detail(querys)
     if not isinstance(rslt['rslt'], list):
+        logging.error(pformat(rslt['rslt']))
         return error(rslt, msg="Open API Server Error")
 
     return ok(rslt)
@@ -94,6 +98,7 @@ def kind(request):
     querys = get_querys(request)
     rslt = get_kind(querys)
     if not isinstance(rslt['rslt'], list):
+        logging.error(pformat(rslt['rslt']))
         return error(rslt, msg="Open API Server Error")
 
     return ok(rslt)
@@ -105,6 +110,7 @@ def abandonment(request):
     querys = get_querys(request)
     rslt = get_abandonment(querys)
     if not isinstance(rslt['rslt'], list):
+        logging.error(pformat(rslt['rslt']))
         return error(rslt, msg="Open API Server Error")
 
     return ok(rslt)
