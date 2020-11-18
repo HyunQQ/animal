@@ -1,3 +1,9 @@
+"""
+    common function
+    5hyunq
+    2020.11.17
+"""
+
 import re
 from urllib.parse import quote_plus
 
