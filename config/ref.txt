@@ -25,3 +25,7 @@ https://github.com/mcchae/JSON-Schema/blob/master/JSON-API.md
 Django TEST:
 https://developer.mozilla.org/ko/docs/Learn/Server-side/Django/Testing
 https://wikidocs.net/11057
+
+TODO>
+KAKAO Sync 로그인
+KAKAO message api를 통한 알 및 내용 공유 기능
