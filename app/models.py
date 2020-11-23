@@ -2,17 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 
-class AnimalUser(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100, unique=True)
-    location = models.CharField(max_length=200)
-    interest = models.CharField(max_length=200, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f'{self.name}, {self.email}'
-
-
 class AnimalUserManager(BaseUserManager):
     use_in_migrations = True
 
@@ -22,9 +11,10 @@ class AnimalUserManager(BaseUserManager):
             raise ValueError('must have user email')
         user = self.model(
             email=self.normalize_email(email),
-            name=name
+            name=name,
+            password = password
         )
-        user.set_password(password)
+        # user.set_password(password)
         user.save(using=self._db)
         return user
 
@@ -53,7 +43,6 @@ class AnimalUser(AbstractBaseUser, PermissionsMixin):
         null=False,
         unique=True
     )
-
     location = models.CharField(max_length=200)
     interest = models.CharField(max_length=200, blank=True)
     is_active = models.BooleanField(default=True)
@@ -62,4 +51,7 @@ class AnimalUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
     USERNAME_FIELD = 'name'
-    REQUIRED_FIELDS = ['email']
+    REQUIRED_FIELDS = ['email', 'name']
+
+    def __str__(self):
+        return f'{self.name}, {self.email}'
