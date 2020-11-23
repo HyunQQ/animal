@@ -11,7 +11,6 @@ class AppConfig(AppConfig):
         from config import app_config
         self.app_config = app_config.AppConfig()
         self.set_logging()
-        logging.info("Server ")
 
     def set_logging(self):
         logger = logging.getLogger()
