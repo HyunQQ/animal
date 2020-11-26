@@ -1,0 +1,11 @@
+docker run -it -v /Users/kebhana/Downloads/hq/animal/:/app/ centos
+
+
+
+
+yum install python38 python38-devel.x86_64
+yum install gcc
+yum groupinstall "Development Tools"
+
+pip3 install -r /app/animal/requirements.txt
+
