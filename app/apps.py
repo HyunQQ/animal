@@ -23,7 +23,7 @@ class AppConfig(AppConfig):
 
         formatter = logging.Formatter(
             fmt     = "[%(levelname)s, %(asctime)s][%(filename)s:%(lineno)s - %(funcName)s] %(message)s",
-            datefmt = '%H:%M:%S'
+            datefmt = '%Y-%m-%d %H:%M:%S'
         )
         console_handler.setFormatter(formatter)
         file_handler.setFormatter(formatter)

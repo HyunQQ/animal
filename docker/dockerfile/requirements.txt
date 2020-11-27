@@ -17,5 +17,6 @@ python-dateutil==2.8.1
 pytz==2020.1
 six==1.15.0
 sqlparse==0.3.1
+uWSGI==2.0.19.1
 wincertstore==0.2
 zipp==3.4.0

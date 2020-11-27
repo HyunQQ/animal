@@ -1,0 +1,17 @@
+#docker compose for animal api
+version: '3'
+
+services:
+  animal-api:
+#    image: animal
+    build:
+      context: ./dockerfile
+      dockerfile: Dockerfile
+    container_name: animal-api
+    expose:
+      - 5000
+    ports:
+    - 5000:5000
+    volumes:
+    - ./../:/app/animal
+    command: uwsgi --ini /app/animal/config/uwsgi.ini
