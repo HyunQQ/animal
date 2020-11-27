@@ -12,7 +12,7 @@ class AnimalUserManager(BaseUserManager):
         user = self.model(
             email=self.normalize_email(email),
             name=name,
-            password = password
+            password=password
         )
         # user.set_password(password)
         user.save(using=self._db)
@@ -51,7 +51,7 @@ class AnimalUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
     USERNAME_FIELD = 'name'
-    REQUIRED_FIELDS = ['email', 'name']
+    REQUIRED_FIELDS = ['email']
 
     def __str__(self):
         return f'{self.name}, {self.email}'
