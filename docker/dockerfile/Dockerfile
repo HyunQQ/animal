@@ -14,7 +14,7 @@ RUN mkdir /app/sock
 RUN mkdir /app/logs
 RUN mkdir /app/tmp
 
-COPY requirements.txt /app/tmp
+COPY ./requirements.txt /app/tmp
 RUN pip3 install -r /app/tmp/requirements.txt
 
 WORKDIR /app/animal
