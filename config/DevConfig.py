@@ -8,4 +8,4 @@ class DevConfig:
 
         # logging config
         self._logging_level = logging.DEBUG
-        self._logging_file_path = os.path.join(os.getcwd(), 'log', 'animal_api.log')
+        self._logging_file_path = os.path.join('app', 'logs', 'animal_api.log')
