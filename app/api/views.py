@@ -1,12 +1,13 @@
 import logging
 from pprint import pformat
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import action, api_view
 from rest_framework.response import Response
 # from rest_framework.views import APIView
 
-from app.models import AnimalUser
+# from app.models import AnimalUser
 from app.api.serializers import UserSerializer, AnimalUserSerializer
 from app.api.animal_api import get_sido, get_kind, get_shelter, get_sigungu, get_abandonment
 from app.api.shelter_api import get_shelter_detail
@@ -16,6 +17,7 @@ from app.common.result import ok, error
 
 
 class UserViewSet(viewsets.ModelViewSet):
+    User = get_user_model()
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
     # permission_classes = [permissions.IsAuthenticated]
@@ -36,7 +38,8 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class AnimalUserViewSet(viewsets.ModelViewSet):
-    queryset = AnimalUser.objects.all().order_by('-created_at')
+    User = get_user_model()
+    queryset = User.objects.all().order_by('-date_joined')
     permission_classes = [
         permissions.AllowAny
     ]
