@@ -133,5 +133,4 @@ dmypy.json
 config/config.ini
 
 # etc
-.idea/
-workspace.xml
+.idea/workspace.xml
