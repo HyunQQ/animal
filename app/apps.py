@@ -15,8 +15,7 @@ class AppConfig(AppConfig):
     def set_logging(self):
         logger = logging.getLogger()
         console_handler = logging.StreamHandler()
-        log_file_nm = os.path.join(os.getcwd(), 'log', 'animal.log')
-        file_handler = handlers.TimedRotatingFileHandler(filename=log_file_nm,
+        file_handler = handlers.TimedRotatingFileHandler(filename=self.app_config.logging_file_path,
                                                          when="midnight",
                                                          backupCount=4,
                                                          encoding='utf-8')
