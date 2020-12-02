@@ -8,4 +8,5 @@ class ProdConfig:
 
         # logging config
         self._logging_level = logging.INFO
-        self._logging_file_path = "/app/logs/animal_api.log"
+        # self._logging_file_path = "/app/animal/logs/animal_api.log"
+        self._logging_file_path = os.path.join(os.getcwd(), 'logs', 'animal_api.log')

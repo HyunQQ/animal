@@ -9,7 +9,7 @@ from urllib.request import urlopen
 from urllib.error import URLError
 from xml.etree import ElementTree
 
-from app.common.common import make_url
+from app.common.common import make_url, check_none_info
 from app.common.result import make_response_content
 
 config = configparser.ConfigParser()
@@ -35,19 +35,19 @@ def get_sido(querys):
         root_element = ElementTree.fromstring(xml_rslt)
 
         info = dict()
-        info['resultCode'] = root_element.find('header').find('resultCode').text
-        info['resultMsg'] = root_element.find('header').find('resultMsg').text
-        info['numOfRows'] = root_element.find('body').find('numOfRows').text
-        info['pageNo'] = root_element.find('body').find('pageNo').text
-        info['totalCount'] = root_element.find('body').find('totalCount').text
+        info['resultCode'] = check_none_info(root_element.find('header').find('resultCode'))
+        info['resultMsg'] = check_none_info(root_element.find('header').find('resultMsg'))
+        info['numOfRows'] = check_none_info(root_element.find('body').find('numOfRows'))
+        info['pageNo'] = check_none_info(root_element.find('body').find('pageNo'))
+        info['totalCount'] = check_none_info(root_element.find('body').find('totalCount'))
 
         rslts = []
         iter_element = root_element.iter(tag='item')
 
         for element in iter_element:
-            rslt = {}
-            rslt['orgCd'] = element.find('orgCd').text
-            rslt['orgdownNm'] = element.find('orgdownNm').text
+            rslt = dict()
+            rslt['orgCd'] = check_none_info(element.find('orgCd'))
+            rslt['orgdownNm'] = check_none_info(element.find('orgdownNm'))
 
             rslts.append(rslt)
 
@@ -81,16 +81,17 @@ def get_sigungu(querys):
 
         root_element = ElementTree.fromstring(xml_rslt)
         info = dict()
-        info['resultCode'] = root_element.find('header').find('resultCode').text
-        info['resultMsg'] = root_element.find('header').find('resultMsg').text
+        info['resultCode'] = check_none_info(root_element.find('header').find('resultCode'))
+        info['resultMsg'] = check_none_info(root_element.find('header').find('resultMsg'))
+
 
         rslts = []
         iter_element = root_element.iter(tag='item')
 
         for element in iter_element:
-            rslt = {}
-            rslt['orgCd'] = element.find('orgCd').text
-            rslt['orgdownNm'] = element.find('orgdownNm').text
+            rslt = dict()
+            rslt['orgCd'] = check_none_info(element.find('orgCd'))
+            rslt['orgdownNm'] = check_none_info(element.find('orgdownNm'))
 
             rslts.append(rslt)
 
@@ -123,16 +124,17 @@ def get_shelter(querys):
 
         root_element = ElementTree.fromstring(xml_rslt)
         info = dict()
-        info['resultCode'] = root_element.find('header').find('resultCode').text
-        info['resultMsg'] = root_element.find('header').find('resultMsg').text
+        info['resultCode'] = check_none_info(root_element.find('header').find('resultCode'))
+        info['resultMsg'] = check_none_info(root_element.find('header').find('resultMsg'))
+
 
         rslts = []
         iter_element = root_element.iter(tag='item')
 
         for element in iter_element:
-            rslt = {}
-            rslt['careNm'] = element.find('careNm').text
-            rslt['careRegNo'] = element.find('careRegNo').text
+            rslt = dict()
+            rslt['careNm'] = check_none_info(element.find('careNm'))
+            rslt['careRegNo'] = check_none_info(element.find('careRegNo'))
             rslts.append(rslt)
 
         response = make_response_content(response_data=rslts, req_param=req_param, info_data=info)
@@ -165,16 +167,16 @@ def get_kind(querys):
         root_element = ElementTree.fromstring(xml_rslt)
 
         info = dict()
-        info['resultCode'] = root_element.find('header').find('resultCode').text
-        info['resultMsg'] = root_element.find('header').find('resultMsg').text
+        info['resultCode'] = check_none_info(root_element.find('header').find('resultCode'))
+        info['resultMsg'] = check_none_info(root_element.find('header').find('resultMsg'))
 
         rslts = []
         iter_element = root_element.iter(tag='item')
 
         for element in iter_element:
-            rslt = {}
-            rslt['KNm'] = element.find('KNm').text
-            rslt['kindCd'] = element.find('kindCd').text
+            rslt = dict()
+            rslt['KNm'] = check_none_info(element.find('KNm'))
+            rslt['kindCd'] = check_none_info(element.find('kindCd'))
             rslts.append(rslt)
 
         response = make_response_content(response_data=rslts, req_param=req_param,info_data=info)
@@ -206,40 +208,40 @@ def get_abandonment(querys):
 
         root_element = ElementTree.fromstring(xml_rslt)
         info = dict()
-        info['resultCode'] = root_element.find('header').find('resultCode').text
-        info['resultMsg'] = root_element.find('header').find('resultMsg').text
-        info['numOfRows'] = root_element.find('body').find('numOfRows').text
-        info['pageNo'] = root_element.find('body').find('pageNo').text
-        info['totalCount'] = root_element.find('body').find('totalCount').text
+        info['resultCode'] = check_none_info(root_element.find('header').find('resultCode'))
+        info['resultMsg'] = check_none_info(root_element.find('header').find('resultMsg'))
+        info['numOfRows'] = check_none_info(root_element.find('body').find('numOfRows'))
+        info['pageNo'] = check_none_info(root_element.find('body').find('pageNo'))
+        info['totalCount'] = check_none_info(root_element.find('body').find('totalCount'))
+
 
         rslts = []
         iter_element = root_element.iter(tag='item')
 
         for element in iter_element:
-            rslt = {}
-            rslt['desertionNo'] = element.find('desertionNo').text
-            rslt['filename'] = element.find('filename').text
-            rslt['happenDt'] = element.find('happenDt').text
-            rslt['happenPlace'] = element.find('happenPlace').text
-            rslt['kindCd'] = element.find('kindCd').text
-            rslt['colorCd'] = element.find('colorCd').text
-            rslt['age'] = element.find('age').text
-            rslt['weight'] = element.find('weight').text
-            rslt['noticeNo'] = element.find('noticeNo').text
-            rslt['noticeSdt'] = element.find('noticeSdt').text
-            rslt['noticeEdt'] = element.find('noticeEdt').text
-            rslt['popfile'] = element.find('popfile').text
-            rslt['processState'] = element.find('processState').text
-            rslt['sexCd'] = element.find('sexCd').text
-            rslt['neuterYn'] = element.find('neuterYn').text
-            rslt['specialMark'] = element.find('specialMark').text
-            rslt['careNm'] = element.find('careNm').text
-            rslt['careTel'] = element.find('careTel').text
-            rslt['careAddr'] = element.find('careAddr').text
-            rslt['orgNm'] = element.find('orgNm').text
-            rslt['chargeNm'] = element.find('chargeNm').text
-            rslt['officetel'] = element.find('officetel').text
-
+            rslt = dict()
+            rslt['desertionNo'] = check_none_info(element.find('desertionNo'))
+            rslt['filename'] = check_none_info(element.find('filename'))
+            rslt['happenDt'] = check_none_info(element.find('happenDt'))
+            rslt['happenPlace'] = check_none_info(element.find('happenPlace'))
+            rslt['kindCd'] = check_none_info(element.find('kindCd'))
+            rslt['colorCd'] = check_none_info(element.find('colorCd'))
+            rslt['age'] = check_none_info(element.find('age'))
+            rslt['weight'] = check_none_info(element.find('weight'))
+            rslt['noticeNo'] = check_none_info(element.find('noticeNo'))
+            rslt['noticeSdt'] = check_none_info(element.find('noticeSdt'))
+            rslt['noticeEdt'] = check_none_info(element.find('noticeEdt'))
+            rslt['popfile'] = check_none_info(element.find('popfile'))
+            rslt['processState'] = check_none_info(element.find('processState'))
+            rslt['sexCd'] = check_none_info(element.find('sexCd'))
+            rslt['neuterYn'] = check_none_info(element.find('neuterYn'))
+            rslt['specialMark'] = check_none_info(element.find('specialMark'))
+            rslt['careNm'] = check_none_info(element.find('careNm'))
+            rslt['careTel'] = check_none_info(element.find('careTel'))
+            rslt['careAddr'] = check_none_info(element.find('careAddr'))
+            rslt['orgNm'] = check_none_info(element.find('orgNm'))
+            rslt['chargeNm'] = check_none_info(element.find('chargeNm'))
+            rslt['officetel'] = check_none_info(element.find('officetel'))
             rslts.append(rslt)
 
         response = make_response_content(response_data=rslts, req_param=req_param, info_data = info)
