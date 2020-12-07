@@ -11,6 +11,7 @@ from xml.etree import ElementTree
 
 from app.common.common import make_url, check_none_info
 from app.common.result import make_response_content
+from app.api.shelter_api import get_shelter_detail
 
 config = configparser.ConfigParser()
 config.read('config/config.ini')
@@ -127,7 +128,6 @@ def get_shelter(querys):
         info['resultCode'] = check_none_info(root_element.find('header').find('resultCode'))
         info['resultMsg'] = check_none_info(root_element.find('header').find('resultMsg'))
 
-
         rslts = []
         iter_element = root_element.iter(tag='item')
 
@@ -135,6 +135,12 @@ def get_shelter(querys):
             rslt = dict()
             rslt['careNm'] = check_none_info(element.find('careNm'))
             rslt['careRegNo'] = check_none_info(element.find('careRegNo'))
+            shelter_detail_info = get_shelter_detail(rslt['careRegNo'])
+            if isinstance(shelter_detail_info, dict):
+                rslt.update(shelter_detail_info)
+            else:
+                info['resultMsg'] = "SHELTER DETAIL API ERROR : " + shelter_detail_info
+
             rslts.append(rslt)
 
         response = make_response_content(response_data=rslts, req_param=req_param, info_data=info)
@@ -213,7 +219,6 @@ def get_abandonment(querys):
         info['numOfRows'] = check_none_info(root_element.find('body').find('numOfRows'))
         info['pageNo'] = check_none_info(root_element.find('body').find('pageNo'))
         info['totalCount'] = check_none_info(root_element.find('body').find('totalCount'))
-
 
         rslts = []
         iter_element = root_element.iter(tag='item')
