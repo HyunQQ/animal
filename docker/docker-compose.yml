@@ -7,6 +7,7 @@ services:
     build:
       context: ./dockerfile
       dockerfile: Dockerfile
+    image: animal-api:1.0
     container_name: animal-api
     expose:
       - 5000
@@ -14,5 +15,5 @@ services:
     - 5000:5000
     volumes:
     - ./../:/app/animal
-    - ./../../logs:/app/logs
+#    - ./../../logs:/app/logs
     command: uwsgi --ini /app/animal/config/uwsgi.ini

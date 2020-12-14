@@ -33,4 +33,5 @@ def make_url(basic_url: str, query_data: dict):
     return full_url
 
 
-
+def check_none_info(element):
+    return element.text if element is not None else ""

@@ -26,6 +26,16 @@ Django TEST:
 https://developer.mozilla.org/ko/docs/Learn/Server-side/Django/Testing
 https://wikidocs.net/11057
 
+반려동물 등록 대행업체 조회:
+https://www.data.go.kr/data/15001097/openapi.do
+
+농림축산검역본부 동물등록 정보:
+https://www.data.go.kr/data/15029855/openapi.do
+
+동물보호관리시스템:
+https://www.animal.go.kr/front/index.do
+
+
 TODO>
 KAKAO Sync 로그인
 KAKAO message api를 통한 알 및 내용 공유 기능

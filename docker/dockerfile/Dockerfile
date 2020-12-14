@@ -11,7 +11,7 @@ RUN dnf install -y langpacks-en langpacks-ko
 
 RUN mkdir /app
 RUN mkdir /app/sock
-RUN mkdir /app/logs
+#RUN mkdir /app/animal/logs
 RUN mkdir /app/tmp
 
 COPY ./requirements.txt /app/tmp

@@ -51,6 +51,7 @@ class AnimalUserViewSet(viewsets.ModelViewSet):
 @param_validator
 def sido(request):
     querys = get_querys(request)
+    querys['numOfRows'] = 20  # 한번에 sido 값을 모두 가져오기 위해 설정(10개일 경우 잘림)
     rslt = get_sido(querys)
     if not isinstance(rslt['rslt'], list):
         logging.error(pformat(rslt['rslt']))
