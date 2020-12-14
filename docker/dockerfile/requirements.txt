@@ -4,6 +4,7 @@ certifi==2020.6.20
 cffi==1.14.3
 cryptography==3.2.1
 Django==3.1.1
+django-cors-headers==3.6.0
 django-rest-knox==4.1.0
 djangorestframework==3.12.1
 genson==1.2.2
@@ -17,6 +18,6 @@ python-dateutil==2.8.1
 pytz==2020.1
 six==1.15.0
 sqlparse==0.3.1
-uWSGI==2.0.19.1
 wincertstore==0.2
 zipp==3.4.0
+uWSGI==2.0.19.1
