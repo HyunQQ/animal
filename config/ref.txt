@@ -36,6 +36,10 @@ https://www.data.go.kr/data/15029855/openapi.do
 https://www.animal.go.kr/front/index.do
 
 
+샘플 화면:
+http://webjangi.com/design/sampleDownload?cid=215
+http://webjangi.com/design/sampleDownload?cid=588
+
 TODO>
 KAKAO Sync 로그인
 KAKAO message api를 통한 알 및 내용 공유 기능
