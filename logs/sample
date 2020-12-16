@@ -1,0 +1,8 @@
+[INFO, 2020-12-15 17:35:33][decorator.py:21 - wrapper] Client call url : /sido/
+[DEBUG, 2020-12-15 17:35:33][decorator.py:28 - wrapper] Requested Query param :
+{}
+[DEBUG, 2020-12-15 17:35:33][decorator.py:29 - wrapper] Validator Json :
+{'$schema': 'http://json-schema.org/schema#',
+ 'properties': {'numOfRows': {'type': 'string'}, 'pageNo': {'type': 'string'}},
+ 'required': [],
+ 'type': 'object'}
