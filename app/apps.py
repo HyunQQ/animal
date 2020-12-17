@@ -31,3 +31,4 @@ class AppConfig(AppConfig):
         logger.addHandler(file_handler)
         logger.setLevel(self.app_config.logging_level)
 
+

@@ -1,3 +1,4 @@
+<animal_api.log>
 [INFO, 2020-12-15 17:35:33][decorator.py:21 - wrapper] Client call url : /sido/
 [DEBUG, 2020-12-15 17:35:33][decorator.py:28 - wrapper] Requested Query param :
 {}
@@ -6,3 +7,13 @@
  'properties': {'numOfRows': {'type': 'string'}, 'pageNo': {'type': 'string'}},
  'required': [],
  'type': 'object'}
+...
+
+<animal_uwsgi.log>
+*** Starting uWSGI 2.0.19.1 (64bit) on [Wed Dec  2 10:41:26 2020] ***
+compiled with version: 8.3.1 20191121 (Red Hat 8.3.1-5) on 27 November 2020 02:12:23
+os: Linux-5.4.39-linuxkit #1 SMP Fri May 8 23:03:06 UTC 2020
+nodename: d3f0e591ba17
+machine: x86_64
+clock source: unix
+...

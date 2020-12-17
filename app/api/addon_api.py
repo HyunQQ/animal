@@ -4,6 +4,8 @@ def get_nearby_shelter(location):
     sido = sub_location[0]
     sigungu = sub_location[1]
 
+
+
     return 0
 
 
