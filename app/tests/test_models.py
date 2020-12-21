@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from app.models import AnimalUser
+from app.models.users import AnimalUser
 
 
 class AnimalModelTest(TestCase):
