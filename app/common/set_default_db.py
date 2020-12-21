@@ -3,7 +3,8 @@ from urllib.request import urlopen
 from urllib.error import URLError
 from xml.etree import ElementTree
 
-from app.models.locations import Sido, Sigungu, Kind
+from app.models.locations import Sido, Sigungu
+from app.models.animal import KindCd
 from app.common.common import make_url, check_none_info
 
 config = configparser.ConfigParser()
@@ -61,6 +62,7 @@ def set_sigungu_info(sido_inst):
     except URLError as e:
         print(e)
 
+
 def set_kind_info():
     data = {
         "417000": "개",
@@ -69,7 +71,7 @@ def set_kind_info():
     }
 
     for cd, nm in data.items():
-        Kind.objects.create(kindCd=cd, kindNm=nm)
+        KindCd.objects.create(kindCd=cd, kindNm=nm)
 
 
 if __name__ == "__main__":

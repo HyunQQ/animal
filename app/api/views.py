@@ -8,14 +8,16 @@ from rest_framework.response import Response
 # from rest_framework.views import APIView
 
 # from app.models import AnimalUser
-from app.api.serializers import UserSerializer, AnimalUserSerializer
+from app.api.serializers import UserSerializer, AnimalUserSerializer, SidoSerializer, SigunguSerializer, KindCdSerializer
 from app.api.animal_api import get_sido, get_kind, get_shelter, get_sigungu, get_abandonment
 from app.api.shelter_api import get_shelter_detail
 from app.common.common import get_querys
 from app.common.decorator import param_validator
-from app.common.result import ok, error
-from app.models.locations import Sido, Kind
+from app.common.result import ok, error, make_response_content
+from app.models.locations import Sido, Sigungu
+from app.models.animal import KindCd
 from app.common.set_default_db import set_kind_info, set_sido_info
+
 
 class UserViewSet(viewsets.ModelViewSet):
     User = get_user_model()
@@ -54,7 +56,7 @@ def set_default_db(request):
     if Sido.objects.all().count() == 0:
         set_sido_info()
 
-    if Kind.objects.all().count() == 0:
+    if KindCd.objects.all().count() == 0:
         set_kind_info()
 
     return ok('Default Value Set')
@@ -63,26 +65,55 @@ def set_default_db(request):
 @api_view(['GET'])
 @param_validator
 def sido(request):
-    querys = get_querys(request)
-    querys['numOfRows'] = '20'  # 한번에 sido 값을 모두 가져오기 위해 설정(10개일 경우 잘림)
-    rslt = get_sido(querys)
-    if not isinstance(rslt['rslt'], list):
-        logging.error(pformat(rslt['rslt']))
-        return error(rslt, msg="Open API Server Error")
+    try:
+        sido = Sido.objects.all()
+    except Sido.DoesNotExist:
+        return error("", msg="Sido data does not exist.")
+
+    serializer = SidoSerializer(sido, many=True)
+    rslt = make_response_content(response_data=serializer.data, req_param={}, info_data={})
 
     return ok(rslt)
+
+# sido old version
+# @api_view(['GET'])
+# @param_validator
+# def sido(request):
+#     querys = get_querys(request)
+#     querys['numOfRows'] = '20'  # 한번에 sido 값을 모두 가져오기 위해 설정(10개일 경우 잘림)
+#     rslt = get_sido(querys)
+#     if not isinstance(rslt['rslt'], list):
+#         logging.error(pformat(rslt['rslt']))
+#         return error(rslt, msg="Open API Server Error")
+#
+#     return ok(rslt)
 
 
 @api_view(['GET'])
 @param_validator
 def sigungu(request):
     querys = get_querys(request)
-    rslt = get_sigungu(querys)
-    if not isinstance(rslt['rslt'], list):
-        logging.error(pformat(rslt['rslt']))
-        return error(rslt, msg="Open API Server Error")
+    try:
+        sigungu = Sigungu.objects.filter(sidoCd=querys['upr_cd'])
+    except Sigungu.DoesNotExist:
+        return error("", msg="Sido data does not exist.")
+
+    serializer = SigunguSerializer(sigungu, many=True)
+    rslt = make_response_content(response_data=serializer.data, req_param=querys, info_data={})
 
     return ok(rslt)
+
+# sigungu old version
+# @api_view(['GET'])
+# @param_validator
+# def sigungu(request):
+#     querys = get_querys(request)
+#     rslt = get_sigungu(querys)
+#     if not isinstance(rslt['rslt'], list):
+#         logging.error(pformat(rslt['rslt']))
+#         return error(rslt, msg="Open API Server Error")
+#
+#     return ok(rslt)
 
 
 @api_view(['GET'])
@@ -105,6 +136,20 @@ def shelter_detail(request):
     if not isinstance(rslt['rslt'], list):
         logging.error(pformat(rslt['rslt']))
         return error(rslt, msg="Open API Server Error")
+
+    return ok(rslt)
+
+
+@api_view(['GET'])
+@param_validator
+def kind_cd(request):
+    try:
+        kind_cd = KindCd.objects.all()
+    except KindCd.DoesNotExist:
+        return error("", msg="Sido data does not exist.")
+
+    serializer = KindCdSerializer(kind_cd, many=True)
+    rslt = make_response_content(response_data=serializer.data, req_param={}, info_data={})
 
     return ok(rslt)
 
