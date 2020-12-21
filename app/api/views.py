@@ -14,7 +14,8 @@ from app.api.shelter_api import get_shelter_detail
 from app.common.common import get_querys
 from app.common.decorator import param_validator
 from app.common.result import ok, error
-
+from app.models.locations import Sido, Kind
+from app.common.set_default_db import set_kind_info, set_sido_info
 
 class UserViewSet(viewsets.ModelViewSet):
     User = get_user_model()
@@ -45,6 +46,18 @@ class AnimalUserViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = AnimalUserSerializer
 
+
+# Defalut Value Set
+@api_view(['POST'])
+@param_validator
+def set_default_db(request):
+    if Sido.objects.all().count() == 0:
+        set_sido_info()
+
+    if Kind.objects.all().count() == 0:
+        set_kind_info()
+
+    return ok('Default Value Set')
 
 # FBV
 @api_view(['GET'])

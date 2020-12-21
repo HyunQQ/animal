@@ -1,6 +1,6 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 from rest_framework import serializers
-from app.models import AnimalUser
+from app.models.users import AnimalUser
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
