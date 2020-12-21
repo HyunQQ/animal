@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework import routers
 from app.api.views import UserViewSet, AnimalUserViewSet
-from app.api.views import sido, sigungu, shelter, shelter_detail, kind, abandonment, set_default_db
+from app.api.views import sido, sigungu, shelter, shelter_detail, kind, kind_cd,  abandonment, set_default_db
 
 app_name='app'
 
@@ -18,6 +18,7 @@ urlpatterns=[
     path('sigungu/', sigungu),
     path('shelter/', shelter),
     path('shelter_detail/', shelter_detail),
+    path('kind_cd/', kind_cd),
     path('kind/', kind),
     path('abandonment/', abandonment)
 ]
