@@ -11,6 +11,7 @@ from rest_framework.response import Response
 from app.api.serializers import UserSerializer, AnimalUserSerializer, SidoSerializer, SigunguSerializer, KindCdSerializer
 from app.api.animal_api import get_sido, get_kind, get_shelter, get_sigungu, get_abandonment
 from app.api.shelter_api import get_shelter_detail
+from app.api.addon_api import get_shelter_nearby
 from app.common.common import get_querys
 from app.common.decorator import param_validator
 from app.common.result import ok, error, make_response_content
@@ -142,6 +143,18 @@ def shelter_detail(request):
 
 @api_view(['GET'])
 @param_validator
+def shelter_nearby(request):
+    querys = get_querys(request)
+    rslt = get_shelter_nearby(querys)
+    if not isinstance(rslt['rslt'], list):
+        logging.error(pformat(rslt['rslt']))
+        return error(rslt, msg="Open API Server Error")
+
+    return ok(rslt)
+
+
+@api_view(['GET'])
+@param_validator
 def kind_cd(request):
     try:
         kind_cd = KindCd.objects.all()
@@ -176,3 +189,6 @@ def abandonment(request):
         return error(rslt, msg="Open API Server Error")
 
     return ok(rslt)
+
+
+
